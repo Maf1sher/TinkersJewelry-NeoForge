@@ -48,7 +48,8 @@ public class DamageItemEvents {
 	// Block break based damage (mining speed, mining level ...)
 	@SubscribeEvent
 	static void onBlockBreak(BlockEvent.BreakEvent event) {
-		CuriosApi.getCuriosHelper().getEquippedCurios(event.getPlayer()).ifPresent(curios -> {
+		CuriosApi.getCuriosInventory(event.getPlayer()).ifPresent(handler -> {
+			IItemHandlerModifiable curios = handler.getEquippedCurios();
 			for (int i=0; i < curios.getSlots(); i++) {
 				ItemStack stackInSlot = curios.getStackInSlot(i);
 				if (stackInSlot.getItem() instanceof ModifiableItem) {
@@ -68,7 +69,8 @@ public class DamageItemEvents {
 	@SubscribeEvent
 	static void onAttackEntity(LivingAttackEvent event) {
 		//hurt player (or entity) (thorns, flames, teleport ...)
-		CuriosApi.getCuriosHelper().getEquippedCurios(event.getEntity()).ifPresent(curios -> {
+		CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
+			IItemHandlerModifiable curios = handler.getEquippedCurios();
 			for (int i=0; i < curios.getSlots(); i++) {
 				ItemStack stackInSlot = curios.getStackInSlot(i);
 				if (stackInSlot.getItem() instanceof ModifiableItem) {
@@ -84,7 +86,8 @@ public class DamageItemEvents {
 		});
 		
 		if (event.getSource().getEntity() instanceof LivingEntity entity) { //hurt by player (or entity) (attack speed, range, ...)
-			CuriosApi.getCuriosHelper().getEquippedCurios(entity).ifPresent(curios -> {
+			CuriosApi.getCuriosInventory(entity).ifPresent(handler -> {
+				IItemHandlerModifiable curios = handler.getEquippedCurios();
 				for (int i=0; i < curios.getSlots(); i++) {
 					ItemStack stackInSlot = curios.getStackInSlot(i);
 					if (stackInSlot.getItem() instanceof ModifiableItem) {
@@ -108,7 +111,8 @@ public class DamageItemEvents {
 		LivingEntity entity = event.getEntity();
 		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(player instanceof FakePlayer)) {
 			// Curios soul bound check
-			CuriosApi.getCuriosHelper().getEquippedCurios(event.getEntity()).ifPresent(curios -> {
+			CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
+				IItemHandlerModifiable curios = handler.getEquippedCurios();
 				for (int i=0; i < curios.getSlots(); i++) {
 					ItemStack stackInSlot = curios.getStackInSlot(i);
 					if (ModifierUtil.checkVolatileFlag(stackInSlot, SOULBOUND)) {
@@ -123,12 +127,12 @@ public class DamageItemEvents {
 	static void onPlayerDropItems(LivingDropsEvent event) {
 		// only care about real players with keep inventory off
 		LivingEntity entity = event.getEntity();
-		var curios = CuriosApi.getCuriosHelper().getEquippedCurios(event.getEntity());
-		if (!curios.isPresent()) {
+		var curiosOpt = CuriosApi.getCuriosInventory(event.getEntity());
+		if (curiosOpt.isEmpty()) {
 			return;
 		}
 		if (!entity.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY) && entity instanceof Player player && !(entity instanceof FakePlayer)) {
-			IItemHandlerModifiable iItemHandlerModifiable = curios.resolve().get();
+			IItemHandlerModifiable iItemHandlerModifiable = curiosOpt.get().getEquippedCurios();
 			Collection<ItemEntity> drops = event.getDrops();
 			Iterator<ItemEntity> iter = drops.iterator();
 			Inventory inventory = player.getInventory();
@@ -180,7 +184,8 @@ public class DamageItemEvents {
 		}
 		LivingEntity entity = event.getEntity();
 		if (entity.isDeadOrDying()) {
-			CuriosApi.getCuriosHelper().getEquippedCurios(entity).ifPresent(curios -> {
+			CuriosApi.getCuriosInventory(entity).ifPresent(handler -> {
+				IItemHandlerModifiable curios = handler.getEquippedCurios();
 				for (int i=0; i < curios.getSlots(); i++) {
 					ItemStack stackInSlot = curios.getStackInSlot(i);
 					if (stackInSlot.getItem() instanceof ModifiableItem) {
