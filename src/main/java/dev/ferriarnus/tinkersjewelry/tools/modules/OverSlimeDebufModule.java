@@ -32,7 +32,7 @@ public record OverSlimeDebufModule() implements ToolStatsHook, ToolModule {
     }
 
     @Override
-    public RecordLoadable<? extends GenericLoaderRegistry.IHaveLoader> getLoader() {
+    public RecordLoadable<? extends ToolModule> getLoader() {
         return LOADER;
     }
 

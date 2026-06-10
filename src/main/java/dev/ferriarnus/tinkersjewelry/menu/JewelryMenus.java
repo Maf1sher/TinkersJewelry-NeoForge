@@ -16,5 +16,5 @@ public class JewelryMenus {
         MENUS.register(modEventBus);
     }
 
-    public static final DeferredHolder<MenuType<SubSpaceMenu>> SUB_SPACE_MENU = MENUS.register("", () -> IMenuTypeExtension.create(SubSpaceMenu::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<SubSpaceMenu>> SUB_SPACE_MENU = MENUS.register("subspace", () -> IMenuTypeExtension.create(SubSpaceMenu::new));
 }

@@ -65,7 +65,7 @@ public class ItemRegistry {
 
 	public static final ItemObject<JewelryBookItem> BOOK  = ITEMS.register("book", () -> new JewelryBookItem(new Item.Properties().stacksTo(1)));
 
-	public static final DeferredHolder<CreativeModeTab> tabTools = CREATIVE_TABS.register(
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tabTools = CREATIVE_TABS.register(
 			"tools", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup." + TinkersJewelry.MODID + ".all"))
 					.icon(() -> {
 						MaterialVariantId material;

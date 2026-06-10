@@ -17,8 +17,8 @@ public class SubSpaceCapability {
     public static final Supplier<AttachmentType<ItemStackHandler>> SUBSPACE =
             ATTACHMENTS.register("subspace", () ->
                     AttachmentType.builder(() -> new ItemStackHandler(6 * 9))
-                            .serialize((handler, tag) -> handler.serializeNBT())
-                            .deserialize((handler, tag) -> handler.deserializeNBT((CompoundTag) tag))
+                            .serialize(ItemStackHandler::serializeNBT)
+                            .deserialize((handler, tag) -> handler.deserializeNBT(tag))
                             .copyOnDeath()
                             .build()
             );
