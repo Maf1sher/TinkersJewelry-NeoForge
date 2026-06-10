@@ -69,7 +69,7 @@ neoForge {
         }
         data {
             data()
-            programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'tconstruct'
+            programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'tconstruct', '--existing-mod', 'mantle'
         }
         configureEach {
             systemProperty 'neoforge.logging.markers', 'REGISTRIES'
@@ -91,22 +91,24 @@ configurations {
 }
 
 dependencies {
-    implementation files('../../Tinkers-1.21.1-NeoForge/Mantle-NeoForge/build/libs/Mantle-1.21.1-1.12.DEV.4bdbb116.jar')
-    implementation files('../../Tinkers-1.21.1-NeoForge/TinkersConstruct-NeoForge/build/libs/TinkersConstruct-1.21.1-3.12.0.DEV.2a9a1fd27b.jar')
+    implementation fileTree(dir: '../../Tinkers-1.21.1-NeoForge/Mantle-NeoForge/build/libs', include: 'Mantle-*.jar')
+    implementation fileTree(dir: '../../Tinkers-1.21.1-NeoForge/TinkersConstruct-NeoForge/build/libs', include: 'TinkersConstruct-*.jar')
 
     compileOnly("curse.maven:curios-309927:6529130")
     runtimeOnly("curse.maven:curios-309927:6529130")
 
     compileOnly("curse.maven:placebo-283644:6926281")
+    runtimeOnly("curse.maven:placebo-283644:6926281")
     compileOnly("curse.maven:apothic-attributes-898963:7445079")
+    runtimeOnly("curse.maven:apothic-attributes-898963:7445079")
 
     compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    runtimeOnly("curse.maven:tinkers-things-json-811436:6105999")
-    runtimeOnly("curse.maven:json-things-541617:6100175")
-    runtimeOnly("curse.maven:ato-405593:5348605")
+    //runtimeOnly("curse.maven:tinkers-things-json-811436:6105999")
+    //runtimeOnly("curse.maven:json-things-541617:6100175")
+    //runtimeOnly("curse.maven:ato-405593:5348605")
 
     implementation("io.github.llamalad7:mixinextras-neoforge:0.4.1")
     compileOnly("io.github.llamalad7:mixinextras-common:0.4.1")

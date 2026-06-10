@@ -59,9 +59,7 @@ public class TinkersJewelry {
 		DataGenerator generator = event.getGenerator();
 		boolean server = event.includeServer();
 		boolean client = event.includeClient();
-		generator.addProvider(server, new JewelryToolsRecipe(generator.getPackOutput(), event.getLookupProvider()));
-		generator.addProvider(server, new JewelryMaterialRecipe(generator.getPackOutput(), event.getLookupProvider()));
-		generator.addProvider(server, new JewelrySmeltryRecipe(generator.getPackOutput(), event.getLookupProvider()));
+		generator.addProvider(server, new JewelryRecipeProvider(generator.getPackOutput(), event.getLookupProvider()));
 		JewelryMaterialData newMaterials = new JewelryMaterialData(generator.getPackOutput());
 		generator.addProvider(server, newMaterials);
 		generator.addProvider(server, new JewelryMaterialStatsData(generator.getPackOutput(), newMaterials));
@@ -69,7 +67,6 @@ public class TinkersJewelry {
 		generator.addProvider(server, new JewelryToolDefinitionData(generator.getPackOutput()));
 		generator.addProvider(server, new JewelryStationSlotLayout(generator.getPackOutput()));
 		generator.addProvider(server, new JewelryModifierProvider(generator.getPackOutput()));
-		generator.addProvider(server, new JewelryModifierRecipe(generator.getPackOutput(), event.getLookupProvider()));
 
 		TinkerMaterialSpriteProvider materialSprites = new TinkerMaterialSpriteProvider();
 		JewelryMaterialSprite newMaterialSprites = new JewelryMaterialSprite();

@@ -1,0 +1,11 @@
+{
+  "type": "tconstruct:item_part_builder",
+  "pattern": "tinkersjewelry:plain_ring",
+  "pattern_item": {
+    "tag": "c:sands/red"
+  },
+  "result": {
+    "count": 4,
+    "item": "tinkersjewelry:plain_ring_red_sand_cast"
+  }
+}

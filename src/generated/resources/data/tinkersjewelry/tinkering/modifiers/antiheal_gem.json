@@ -31,7 +31,7 @@
           }
         }
       },
-      "effect": "attributeslib:grievous"
+      "effect": "apothic_attributes:grievous"
     },
     {
       "type": "tinkersjewelry:hurt_enemy",

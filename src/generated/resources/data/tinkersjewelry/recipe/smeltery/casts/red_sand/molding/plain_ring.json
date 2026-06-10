@@ -1,0 +1,13 @@
+{
+  "type": "tconstruct:molding_table",
+  "material": {
+    "tag": "tconstruct:casts/red_sand"
+  },
+  "pattern": {
+    "type": "tconstruct:material",
+    "match": {
+      "item": "tinkersjewelry:plain_ring"
+    }
+  },
+  "result": "tinkersjewelry:plain_ring_red_sand_cast"
+}

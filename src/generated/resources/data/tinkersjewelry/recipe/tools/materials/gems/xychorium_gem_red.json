@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gems/xychorium_gem_red"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:gems/xychorium_gem_red"
+  },
+  "material": "tinkersjewelry:xychorium_gem_red",
+  "needed": 1,
+  "value": 1
+}

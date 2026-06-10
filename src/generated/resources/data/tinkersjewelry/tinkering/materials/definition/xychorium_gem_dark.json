@@ -1,6 +1,6 @@
 {
   "condition": {
-    "type": "forge:or",
+    "type": "neoforge:or",
     "values": [
       {
         "type": "tconstruct:config",
@@ -8,7 +8,7 @@
       },
       {
         "type": "mantle:tag_filled",
-        "tag": "forge:gems/xychorium_gem_dark"
+        "tag": "c:gems/xychorium_gem_dark"
       }
     ]
   },

@@ -28,7 +28,7 @@ public class JewelryModifierRecipe extends RecipeProvider implements IConditionB
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput consumer) {
+    public void buildRecipes(RecipeOutput consumer) {
 
         String upgradeFolder = "tools/modifiers/upgrade/";
         String abilityFolder = "tools/modifiers/ability/";

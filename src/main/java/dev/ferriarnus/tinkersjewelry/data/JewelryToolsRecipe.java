@@ -33,7 +33,7 @@ public class JewelryToolsRecipe extends RecipeProvider implements IMaterialRecip
 	}
 
 	@Override
-	protected void buildRecipes(RecipeOutput consumer) {
+	public void buildRecipes(RecipeOutput consumer) {
 		String partFolder = "tools/parts/";
 		String castFolder = "smeltery/casts/";
 		String folder = "tools/building/";

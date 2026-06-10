@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gems/xychorium_gem_light"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:gems/xychorium_gem_light"
+  },
+  "material": "tinkersjewelry:xychorium_gem_light",
+  "needed": 1,
+  "value": 1
+}

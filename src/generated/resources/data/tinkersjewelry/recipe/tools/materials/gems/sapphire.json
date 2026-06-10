@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gems/sapphire"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:gems/sapphire"
+  },
+  "material": "tinkersjewelry:sapphire",
+  "needed": 1,
+  "value": 1
+}

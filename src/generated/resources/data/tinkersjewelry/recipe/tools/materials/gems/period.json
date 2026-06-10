@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gems/peridot"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:gems/peridot"
+  },
+  "material": "tinkersjewelry:peridot",
+  "needed": 1,
+  "value": 1
+}

@@ -3,7 +3,7 @@
   "modules": [
     {
       "type": "tinkersjewelry:attribute_modifier",
-      "attribute": "attributeslib:mining_speed",
+      "attribute": "apothic_attributes:mining_speed",
       "formula": [
         "$level",
         0.25,
@@ -11,7 +11,7 @@
         "$amplification",
         "*"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.mining_speed_gem",
       "variables": {
         "amplification": {

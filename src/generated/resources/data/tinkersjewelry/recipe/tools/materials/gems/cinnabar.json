@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gems/cinnabar"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:gems/cinnabar"
+  },
+  "material": "tinkersjewelry:cinnabar",
+  "needed": 1,
+  "value": 1
+}

@@ -27,7 +27,7 @@ public class JewelryMaterialRecipe extends RecipeProvider implements IMaterialRe
 	}
 
 	@Override
-	protected void buildRecipes(RecipeOutput consumer) {
+	public void buildRecipes(RecipeOutput consumer) {
 		String folder = "tools/materials/";
 		materialRecipe(consumer, JewelryMaterials.redstone, Ingredient.of(Items.REDSTONE), 1, 1, folder + "gems/redstone");
 		materialRecipe(consumer, JewelryMaterials.eudialyte, Ingredient.of(ItemRegistry.EUDIALYTE), 1, 1, folder + "gems/blood");
@@ -66,7 +66,12 @@ public class JewelryMaterialRecipe extends RecipeProvider implements IMaterialRe
 		optionalMaterialRecipe(consumer, JewelryMaterials.xychorium_gem_light, JewelryMaterials.Tags.LIGHT_XYCHORIUM, 1, 1, folder + "gems/xychorium_gem_light");
 		optionalMaterialRecipe(consumer, JewelryMaterials.xychorium_gem_dark, JewelryMaterials.Tags.DARK_XYCHORIUM, 1, 1, folder + "gems/xychorium_gem_dark");
 
-		materialRecipe(consumer, JewelryMaterials.hematite, Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse("tinkers_things:hematite"))), 1, 1, folder + "gems/hematite");
+		if (net.neoforged.fml.ModList.get().isLoaded("tinkers_things")) {
+			Item hematiteItem = BuiltInRegistries.ITEM.get(ResourceLocation.parse("tinkers_things:hematite"));
+			if (hematiteItem != null) {
+				materialRecipe(consumer, JewelryMaterials.hematite, Ingredient.of(hematiteItem), 1, 1, folder + "gems/hematite");
+			}
+		}
 		materialRecipe(consumer, JewelryMaterials.ichor_crystal, Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse(TConstruct.MOD_ID + ":ichor_slime_crystal"))), 1, 1, folder + "gems/ichor_slime_crystal");
 		materialRecipe(consumer, JewelryMaterials.earth_crystal, Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse(TConstruct.MOD_ID + ":earth_slime_crystal"))), 1, 1, folder + "gems/earth_slime_crystal");
 		materialRecipe(consumer, JewelryMaterials.sky_crystal, Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.parse(TConstruct.MOD_ID + ":sky_slime_crystal"))), 1, 1, folder + "gems/sky_slime_crystal");
@@ -77,6 +82,14 @@ public class JewelryMaterialRecipe extends RecipeProvider implements IMaterialRe
 	public void optionalMaterialRecipe(RecipeOutput consumer, MaterialVariantId material, TagKey<Item> tag, int value, int needed, String saveName) {
 		RecipeOutput wrapped = this.withCondition(consumer, this.tagCondition(tag.location().getPath()));
 		this.materialRecipe(wrapped, material, Ingredient.of(tag), value, needed, null, saveName);
+	}
+
+	public void optionalMaterialRecipeWithCondition(RecipeOutput consumer, MaterialVariantId material, String itemId, String saveName) {
+		RecipeOutput wrapped = this.withCondition(consumer, this.tagCondition(itemId.replace(':', '/')));
+		Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
+		if (item != null) {
+			this.materialRecipe(wrapped, material, Ingredient.of(item), 1, 1, null, saveName);
+		}
 	}
 
 	@Override

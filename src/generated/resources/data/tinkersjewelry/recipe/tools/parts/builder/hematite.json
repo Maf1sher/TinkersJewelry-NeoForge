@@ -1,0 +1,7 @@
+{
+  "type": "tconstruct:item_part_builder",
+  "cost": 1,
+  "material": "tinkers_things:hematite",
+  "pattern": "tinkersjewelry:gem",
+  "result": "tinkersjewelry:gem"
+}

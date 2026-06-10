@@ -3,7 +3,7 @@
   "modules": [
     {
       "type": "tinkersjewelry:attribute_modifier",
-      "attribute": "attributeslib:life_steal",
+      "attribute": "apothic_attributes:life_steal",
       "formula": [
         "$level",
         1.0,
@@ -15,7 +15,7 @@
         "$amplification",
         "*"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.lifesteal_gem",
       "variables": {
         "amplification": {

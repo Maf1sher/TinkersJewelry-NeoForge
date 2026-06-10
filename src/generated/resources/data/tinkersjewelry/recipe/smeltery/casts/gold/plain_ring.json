@@ -1,0 +1,17 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "type": "tconstruct:material",
+    "match": {
+      "item": "tinkersjewelry:plain_ring"
+    }
+  },
+  "cast_consumed": true,
+  "cooling_time": 57,
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_gold"
+  },
+  "result": "tinkersjewelry:plain_ring_cast",
+  "switch_slots": true
+}

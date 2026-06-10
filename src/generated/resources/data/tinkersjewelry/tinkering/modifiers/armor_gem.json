@@ -13,7 +13,7 @@
         1.5,
         "+"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.armor_gem",
       "variables": {
         "amplification": {

@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gems/ruby"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:gems/ruby"
+  },
+  "material": "tinkersjewelry:ruby",
+  "needed": 1,
+  "value": 1
+}

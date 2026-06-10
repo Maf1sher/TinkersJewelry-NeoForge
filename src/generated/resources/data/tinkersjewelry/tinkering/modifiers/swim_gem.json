@@ -3,13 +3,13 @@
   "modules": [
     {
       "type": "tinkersjewelry:attribute_modifier",
-      "attribute": "forge:swim_speed",
+      "attribute": "neoforge:swim_speed",
       "formula": [
         "$level",
         "$amplification",
         "*"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.swim_gem",
       "variables": {
         "amplification": {

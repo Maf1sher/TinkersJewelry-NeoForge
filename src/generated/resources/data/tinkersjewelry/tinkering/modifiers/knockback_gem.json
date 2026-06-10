@@ -13,7 +13,7 @@
         "$amplification",
         "*"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.knockback_gem",
       "variables": {
         "amplification": {

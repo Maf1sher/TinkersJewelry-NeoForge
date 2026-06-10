@@ -1,9 +1,0 @@
-{
-  "type": "tconstruct:material",
-  "ingredient": {
-    "item": "minecraft:scute"
-  },
-  "material": "tinkersjewelry:scute",
-  "needed": 1,
-  "value": 1
-}

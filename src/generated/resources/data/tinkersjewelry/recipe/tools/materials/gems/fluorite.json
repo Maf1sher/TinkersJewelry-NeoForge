@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gems/fluorite"
+    }
+  ],
+  "type": "tconstruct:material",
+  "ingredient": {
+    "tag": "c:gems/fluorite"
+  },
+  "material": "tinkersjewelry:fluorite",
+  "needed": 1,
+  "value": 1
+}

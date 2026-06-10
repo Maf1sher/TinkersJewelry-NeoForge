@@ -3,7 +3,7 @@
   "modules": [
     {
       "type": "tinkersjewelry:attribute_modifier",
-      "attribute": "attributeslib:armor_pierce",
+      "attribute": "apothic_attributes:armor_pierce",
       "formula": [
         "$level",
         1.0,
@@ -15,7 +15,7 @@
         "$amplification",
         "*"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.piercing_gem",
       "variables": {
         "amplification": {

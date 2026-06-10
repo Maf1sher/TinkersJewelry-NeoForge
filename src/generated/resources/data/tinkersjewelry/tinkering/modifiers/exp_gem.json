@@ -3,7 +3,7 @@
   "modules": [
     {
       "type": "tinkersjewelry:attribute_modifier",
-      "attribute": "attributeslib:experience_gained",
+      "attribute": "apothic_attributes:experience_gained",
       "formula": [
         "$level",
         0.2,
@@ -11,7 +11,7 @@
         "$amplification",
         "*"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.exp_gem",
       "variables": {
         "amplification": {

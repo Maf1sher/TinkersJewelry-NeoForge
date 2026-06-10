@@ -23,7 +23,7 @@ public class JewelrySmeltryRecipe extends RecipeProvider implements ISmelteryRec
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput consumer) {
+    public void buildRecipes(RecipeOutput consumer) {
         castingRecipes(consumer);
     }
 

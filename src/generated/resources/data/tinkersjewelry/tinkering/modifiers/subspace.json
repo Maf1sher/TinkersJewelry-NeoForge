@@ -7,7 +7,7 @@
       "formula": [
         "$level"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "unique": "tinkersjewelry.modifier.subspace",
       "variables": {
         "amplification": {
