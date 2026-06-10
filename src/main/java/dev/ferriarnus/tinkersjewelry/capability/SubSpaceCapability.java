@@ -9,9 +9,9 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.*;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.ItemStackHandler;
+import dummy.remove;
+import dummy.remove;
+import dummy.remove;
 
 public class SubSpaceCapability implements INBTSerializable<CompoundTag> {
 

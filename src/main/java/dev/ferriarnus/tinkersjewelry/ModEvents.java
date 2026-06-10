@@ -1,22 +1,19 @@
 package dev.ferriarnus.tinkersjewelry;
 
-import dev.ferriarnus.tinkersjewelry.capability.SubSpaceCapability;
 import dev.ferriarnus.tinkersjewelry.tools.modules.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
+import dummy.remove;
+import dummy.remove;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.RegisterEvent;
 import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.tools.definition.module.ToolModule;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = TinkersJewelry.MODID)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = TinkersJewelry.MODID)
 public class ModEvents {
 
     @SubscribeEvent
@@ -33,8 +30,5 @@ public class ModEvents {
         }
     }
 
-    @SubscribeEvent
-    public static void registerCap(RegisterCapabilitiesEvent event) {
-        event.register(SubSpaceCapability.class);
-    }
+
 }

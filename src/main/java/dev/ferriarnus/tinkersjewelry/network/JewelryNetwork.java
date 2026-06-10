@@ -2,7 +2,7 @@ package dev.ferriarnus.tinkersjewelry.network;
 
 import dev.ferriarnus.tinkersjewelry.TinkersJewelry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.network.NetworkDirection;
+import net.neoforged.neoforge.network.NetworkDirection;
 import slimeknights.mantle.network.NetworkWrapper;
 
 public class JewelryNetwork extends NetworkWrapper {

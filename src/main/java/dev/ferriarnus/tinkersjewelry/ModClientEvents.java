@@ -5,23 +5,17 @@ import dev.ferriarnus.tinkersjewelry.client.SubSpaceScreen;
 import dev.ferriarnus.tinkersjewelry.menu.JewelryMenus;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.lifecycle.FMLClientSetupEvent;
 import org.lwjgl.glfw.GLFW;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = TinkersJewelry.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = TinkersJewelry.MODID, value = Dist.CLIENT)
 public class ModClientEvents {
 
     public static final KeyMapping SUBSPACE = new KeyMapping("key.tinkersjewelry.subspace", GLFW.GLFW_KEY_K, "key.categories.tinkersjewelry");
-
-    @SubscribeEvent
-    static void construct(FMLConstructModEvent event) {
-        JewerlyBook.initBook();
-    }
 
     @SubscribeEvent
     static void setupClient(final FMLClientSetupEvent event) {

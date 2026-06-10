@@ -9,10 +9,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
 import dev.ferriarnus.tinkersjewelry.items.ItemRegistry;
@@ -22,20 +21,15 @@ import dev.ferriarnus.tinkersjewelry.tools.stats.BlankBandMaterialStats;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.InterModComms;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 import slimeknights.tconstruct.library.client.data.material.GeneratorPartTextureJsonGenerator;
 import slimeknights.tconstruct.library.client.data.material.MaterialPartTextureGenerator;
 import slimeknights.tconstruct.library.materials.MaterialRegistry;
 import slimeknights.tconstruct.tools.data.material.MaterialIds;
 import slimeknights.tconstruct.tools.data.sprite.TinkerMaterialSpriteProvider;
-import top.theillusivec4.curios.api.SlotTypeMessage;
-import top.theillusivec4.curios.api.SlotTypePreset;
 
 @Mod(TinkersJewelry.MODID)
 public class TinkersJewelry {
@@ -45,35 +39,22 @@ public class TinkersJewelry {
 	public static final TagKey<Item> JEWELRY = ItemTags.create(new ResourceLocation(MODID, "modifiable/jewelry"));
 
 
-	public TinkersJewelry() { 
+	public TinkersJewelry(IEventBus modEventBus) { 
 		
-		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
-        modEventBus.addListener(this::sendImc);
-		MinecraftForge.EVENT_BUS.addListener(this::commonSetup);
+		NeoForge.EVENT_BUS.addListener(this::commonSetup);
 
 		JewelryToolStats.register();
-		
-		ItemRegistry.register();
-		JewelryModifiers.register();
-		GemAttributes.register();
-		JewelryMenus.register();
 
-		JewelryNetwork.setup();
-
-		ForgeMod.enableMilkFluid();
-	}
-	
-	public void sendImc(InterModEnqueueEvent evt) {
-		InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CHARM.getMessageBuilder().build());
-		InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.RING.getMessageBuilder().size(2).build());
-		InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.BELT.getMessageBuilder().build());
-		InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.BODY.getMessageBuilder().build());
-		InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.HEAD.getMessageBuilder().build());
-		InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.NECKLACE.getMessageBuilder().build());
-		
 		MaterialRegistry.getInstance().registerStatType(BlankBandMaterialStats.TYPE);
 		MaterialRegistry.getInstance().registerStatType(GemMaterialStats.TYPE);
+		
+		ItemRegistry.register(modEventBus);
+		JewelryModifiers.register(modEventBus);
+		GemAttributes.register(modEventBus);
+		JewelryMenus.register(modEventBus);
+
+		JewelryNetwork.setup();
 	}
 
 	public void commonSetup(FMLCommonSetupEvent event) {

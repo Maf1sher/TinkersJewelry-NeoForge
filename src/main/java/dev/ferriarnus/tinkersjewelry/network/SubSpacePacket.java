@@ -5,8 +5,8 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.SimpleMenuProvider;
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.NetworkHooks;
 import slimeknights.mantle.network.packet.IThreadsafePacket;
 
 public class SubSpacePacket implements IThreadsafePacket {

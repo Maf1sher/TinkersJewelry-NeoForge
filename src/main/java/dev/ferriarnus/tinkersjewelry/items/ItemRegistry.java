@@ -14,8 +14,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.RegistryObject;
 import slimeknights.mantle.item.TooltipItem;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.mantle.registration.object.ItemObject;
@@ -38,9 +38,9 @@ public class ItemRegistry {
 	private static final ItemDeferredRegisterExtension ITEMS = new ItemDeferredRegisterExtension(TinkersJewelry.MODID);
 	
 	
-	public static void register() {
-		CREATIVE_TABS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+	public static void register(IEventBus modEventBus) {
+		CREATIVE_TABS.register(modEventBus);
+		ITEMS.register(modEventBus);
 	}
 
 	//Materials
