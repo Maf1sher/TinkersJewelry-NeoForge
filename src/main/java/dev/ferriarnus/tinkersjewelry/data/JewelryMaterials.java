@@ -88,7 +88,7 @@ public class JewelryMaterials {
 		public static TagKey<Item> LIGHT_XYCHORIUM = tag("gems/xychorium_gem_light");
 
 		private static TagKey<Item> tag(String name) {
-			return ItemTags.create(new ResourceLocation("forge", name));
+			return ItemTags.create(new ResourceLocation("c", name));
 		}
 	}
 }
