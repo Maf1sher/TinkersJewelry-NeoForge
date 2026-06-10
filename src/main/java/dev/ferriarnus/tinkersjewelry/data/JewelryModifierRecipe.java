@@ -56,8 +56,8 @@ public class JewelryModifierRecipe extends RecipeProvider implements IConditionB
                 .addInput(Items.TOTEM_OF_UNDYING)
                 .setSlots(SlotType.ABILITY, 1)
                 .setMaxLevel(1).checkTraitLevel()
-                .saveSalvage(consumer, prefix(JewelryModifiers.UNDYING.location(), abilitySalvage))
-                .save(consumer, prefix(JewelryModifiers.UNDYING.location(), abilityFolder));
+                .saveSalvage(consumer, prefix(JewelryModifiers.UNDYING.getId(), abilitySalvage))
+                .save(consumer, prefix(JewelryModifiers.UNDYING.getId(), abilityFolder));
 
         ModifierRecipeBuilder.modifier(JewelryModifiers.SUBSPACE)
                 .setTools(Ingredient.of(TinkersJewelry.JEWELRY))
