@@ -21,10 +21,10 @@ public class AntiHealGemModifier extends AbstractGemModifier {
 
     @Override
     public void hurtEnemy(ItemStack stack, DamageSource source, double damage, @Nullable LivingEntity defender, @Nullable LivingEntity attacker, ModifierEntry modifier) {
-        if (defender == null || defender.hasEffect(ALObjects.MobEffects.GRIEVOUS.value())) {
+        if (defender == null || defender.hasEffect(ALObjects.MobEffects.GRIEVOUS)) {
             return;
         }
-        defender.addEffect(new MobEffectInstance(ALObjects.MobEffects.GRIEVOUS.value(), 100));
+        defender.addEffect(new MobEffectInstance(ALObjects.MobEffects.GRIEVOUS, 100));
         damageTool(stack, 1, attacker);
     }
 
