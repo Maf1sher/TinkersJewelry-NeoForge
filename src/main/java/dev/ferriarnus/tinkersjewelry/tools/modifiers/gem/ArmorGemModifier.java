@@ -34,7 +34,7 @@ public class ArmorGemModifier extends AbstractGemModifier {
         int level = toolStack.getModifierLevel(modifier.getId());
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         double effect = ( 2.5D * level) * amp;
-        attributeModifiers.put(Attributes.ARMOR, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:armorgem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(Attributes.ARMOR.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:armorgem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

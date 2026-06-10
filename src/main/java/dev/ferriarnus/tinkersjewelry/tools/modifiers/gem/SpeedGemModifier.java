@@ -34,7 +34,7 @@ public class SpeedGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId()) - 1;
         double effect = (1.2 + level * 0.3 ) * amp;
-        attributeModifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:speedgem"), effect, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        attributeModifiers.put(Attributes.MOVEMENT_SPEED.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:speedgem"), effect, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return attributeModifiers;
     }
 

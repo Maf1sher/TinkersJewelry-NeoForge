@@ -35,16 +35,16 @@ public class FlyGemModifier extends AbstractGemModifier {
             wasGround = false;
             ToolStack toolStack = ToolStack.from(stack);
             float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
-            player.removeEffectNoUpdate(ALObjects.MobEffects.FLYING.get());
-            player.forceAddEffect(new MobEffectInstance(ALObjects.MobEffects.FLYING.get(), Mth.floor(100 * amp), 0, false, true), null);
+            player.removeEffectNoUpdate(ALObjects.MobEffects.FLYING.value());
+            player.forceAddEffect(new MobEffectInstance(ALObjects.MobEffects.FLYING.value(), Mth.floor(100 * amp), 0, false, true), null);
             player.getAbilities().flying = true;
             player.onUpdateAbilities();
             damageTool(stack, 15, player);
         }
         else if (player.onGround()) {
             wasGround = true;
-            if (!player.hasEffect(ALObjects.MobEffects.FLYING.get()) || player.getEffect(ALObjects.MobEffects.FLYING.get()).getDuration() <= 200) {
-                player.addEffect(new MobEffectInstance(ALObjects.MobEffects.FLYING.get(), 400, 0, false, true));
+            if (!player.hasEffect(ALObjects.MobEffects.FLYING.value()) || player.getEffect(ALObjects.MobEffects.FLYING.value()).getDuration() <= 200) {
+                player.addEffect(new MobEffectInstance(ALObjects.MobEffects.FLYING.value(), 400, 0, false, true));
             }
         }
     }

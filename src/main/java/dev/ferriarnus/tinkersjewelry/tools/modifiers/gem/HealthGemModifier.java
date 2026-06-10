@@ -34,7 +34,7 @@ public class HealthGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = 3 * level * amp;
-        attributeModifiers.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:healthgem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(Attributes.MAX_HEALTH.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:healthgem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

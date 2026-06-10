@@ -31,7 +31,7 @@ public class TradeGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = 7 * level * amp;
-        attributeModifiers.put(GemAttributes.TRADE, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:trade"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(GemAttributes.TRADE.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:trade"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

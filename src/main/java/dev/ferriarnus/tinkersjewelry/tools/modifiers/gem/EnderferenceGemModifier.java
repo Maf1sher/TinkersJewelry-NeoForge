@@ -21,8 +21,8 @@ public class EnderferenceGemModifier extends AbstractGemModifier {
 
     @Override
     public void hurtEnemy(ItemStack stack, DamageSource source, double damage, @Nullable LivingEntity defender, @Nullable LivingEntity attacker, ModifierEntry modifier) {
-        if (defender != null && attacker != null && !defender.hasEffect(TinkerModifiers.enderferenceEffect.get())) {
-            defender.addEffect(new MobEffectInstance(TinkerModifiers.enderferenceEffect.get(), 100));
+        if (defender != null && attacker != null && !defender.hasEffect(TinkerModifiers.enderferenceEffect)) {
+            defender.addEffect(new MobEffectInstance(TinkerModifiers.enderferenceEffect, 100));
             damageTool(stack, 1, attacker);
         }
     }

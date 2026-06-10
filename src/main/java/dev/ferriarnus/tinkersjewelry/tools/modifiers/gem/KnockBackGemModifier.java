@@ -33,7 +33,7 @@ public class KnockBackGemModifier extends AbstractGemModifier {
         int level = toolStack.getModifierLevel(modifier.getId());
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         double effect = (0.5 + (0.1 * level)) * amp;
-        attributeModifiers.put(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:knockback"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(Attributes.ATTACK_KNOCKBACK.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:knockback"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

@@ -33,7 +33,7 @@ public class LuckGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = level*amp;
-        attributeModifiers.put(Attributes.LUCK, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:luck"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(Attributes.LUCK.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:luck"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 
