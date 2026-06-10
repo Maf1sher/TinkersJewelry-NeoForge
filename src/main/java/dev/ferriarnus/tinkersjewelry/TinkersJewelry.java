@@ -39,20 +39,19 @@ public class TinkersJewelry {
 
 	public TinkersJewelry(IEventBus modEventBus) { 
 		
-        modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
-
-		CuriosModifierHooks.init();
-
-		JewelryToolStats.register();
-
-		MaterialRegistry.getInstance().registerStatType(BlankBandMaterialStats.TYPE);
-		MaterialRegistry.getInstance().registerStatType(GemMaterialStats.TYPE);
-		
 		ItemRegistry.register(modEventBus);
 		JewelryModifiers.register(modEventBus);
 		GemAttributes.register(modEventBus);
 		SubSpaceCapability.ATTACHMENTS.register(modEventBus);
 		JewelryMenus.register(modEventBus);
+
+		CuriosModifierHooks.init();
+		JewelryToolStats.register();
+
+		MaterialRegistry.getInstance().registerStatType(BlankBandMaterialStats.TYPE);
+		MaterialRegistry.getInstance().registerStatType(GemMaterialStats.TYPE);
+
+        modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
 	}
 
 	public void gatherData(final GatherDataEvent event) {
