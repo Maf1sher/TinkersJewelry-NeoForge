@@ -15,7 +15,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import slimeknights.mantle.item.TooltipItem;
 import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.mantle.registration.object.ItemObject;
@@ -65,7 +65,7 @@ public class ItemRegistry {
 
 	public static final ItemObject<JewelryBookItem> BOOK  = ITEMS.register("book", () -> new JewelryBookItem(new Item.Properties().stacksTo(1)));
 
-	public static final RegistryObject<CreativeModeTab> tabTools = CREATIVE_TABS.register(
+	public static final DeferredHolder<CreativeModeTab> tabTools = CREATIVE_TABS.register(
 			"tools", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup." + TinkersJewelry.MODID + ".all"))
 					.icon(() -> {
 						MaterialVariantId material;

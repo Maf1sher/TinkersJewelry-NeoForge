@@ -34,7 +34,7 @@ public class GravityGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = -(0.01 * level * amp);
-        attributeModifiers.put(NeoForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:gravitygem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(NeoForgeMod.ENTITY_GRAVITY.get().value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:gravitygem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

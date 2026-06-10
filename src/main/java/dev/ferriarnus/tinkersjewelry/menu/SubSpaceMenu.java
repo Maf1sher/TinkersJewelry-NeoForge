@@ -18,7 +18,7 @@ public class SubSpaceMenu extends AbstractContainerMenu {
 
     public SubSpaceMenu(int id, Inventory playerInventory) {
         super(JewelryMenus.SUB_SPACE_MENU.get(), id);
-        containerRows = Mth.floor(playerInventory.player.getAttribute(GemAttributes.SUBSPACE.get()).getValue());
+        containerRows = Mth.floor(playerInventory.player.getAttribute(GemAttributes.SUBSPACE).getValue());
         int i = (this.containerRows - 4) * 18;
         var handler = playerInventory.player.getData(SubSpaceCapability.SUBSPACE.get());
         if (handler != null) {

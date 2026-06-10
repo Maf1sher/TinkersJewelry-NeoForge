@@ -27,7 +27,7 @@ public class MixinApplyBonusCount {
         }
         Entity ent = context.getParamOrNull(LootContextParams.THIS_ENTITY);
         if (ent instanceof LivingEntity livingEntity) {
-            double value = livingEntity.getAttributeValue(GemAttributes.FORTUNE.get());
+            double value = livingEntity.getAttributeValue(GemAttributes.FORTUNE);
             int fortune = original.call(enchantment, stack);
             return (int) Math.round(fortune + value);
         }

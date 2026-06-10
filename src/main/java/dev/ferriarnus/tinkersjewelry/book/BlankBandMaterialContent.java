@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
 import javax.annotation.Nullable;
 
 public class BlankBandMaterialContent extends AbstractMaterialContent {
-    public static final ResourceLocation ID = new ResourceLocation(TinkersJewelry.MODID, "blank_band_material");
+    public static final ResourceLocation ID = ResourceLocation.parse(TinkersJewelry.MODID + ":blank_band_material");
 
     public BlankBandMaterialContent(MaterialVariantId materialVariant, boolean detailed) {
         super(materialVariant, detailed);

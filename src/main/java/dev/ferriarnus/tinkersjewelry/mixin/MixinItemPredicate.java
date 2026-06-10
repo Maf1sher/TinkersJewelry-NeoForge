@@ -34,10 +34,10 @@ public class MixinItemPredicate implements IEntityAwarePredicate {
         }
         double value = 0;
         if (instance.enchantment != null && instance.enchantment.is(Enchantments.FORTUNE)) {
-            value = entity.getAttributeValue(GemAttributes.FORTUNE.get());
+            value = entity.getAttributeValue(GemAttributes.FORTUNE);
         }
         if (instance.enchantment != null && instance.enchantment.is(Enchantments.SILK_TOUCH)) {
-            value = entity.getAttributeValue(GemAttributes.SILK.get());
+            value = entity.getAttributeValue(GemAttributes.SILK);
         }
         return original.call(instance, enchantments) || value > 0;
     }

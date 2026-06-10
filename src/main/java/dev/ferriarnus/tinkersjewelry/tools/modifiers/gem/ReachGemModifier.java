@@ -33,8 +33,8 @@ public class ReachGemModifier extends AbstractGemModifier {
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = level * amp;
-        attributeModifiers.put(NeoForgeMod.ENTITY_REACH.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:entity_reachgem"), effect, AttributeModifier.Operation.ADD_VALUE));
-        attributeModifiers.put(NeoForgeMod.BLOCK_REACH.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:block_reachgem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(NeoForgeMod.ENTITY_REACH.get().value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:entity_reachgem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(NeoForgeMod.BLOCK_REACH.get().value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:block_reachgem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

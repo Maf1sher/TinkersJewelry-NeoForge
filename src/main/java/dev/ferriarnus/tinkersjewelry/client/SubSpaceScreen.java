@@ -10,12 +10,12 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 
 public class SubSpaceScreen extends AbstractContainerScreen<SubSpaceMenu> {
-    private static final ResourceLocation CONTAINER_BACKGROUND = new ResourceLocation("textures/gui/container/generic_54.png");
+    private static final ResourceLocation CONTAINER_BACKGROUND = ResourceLocation.parse("textures/gui/container/generic_54.png");
     private int containerRows;
 
     public SubSpaceScreen(SubSpaceMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
-        containerRows = Mth.floor(playerInventory.player.getAttribute(GemAttributes.SUBSPACE.get()).getValue());
+        containerRows = Mth.floor(playerInventory.player.getAttribute(GemAttributes.SUBSPACE).getValue());
         this.imageHeight = 114 + this.containerRows * 18;
         this.inventoryLabelY = this.imageHeight - 94;
     }

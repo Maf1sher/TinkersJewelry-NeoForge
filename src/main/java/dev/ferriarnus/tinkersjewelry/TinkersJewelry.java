@@ -9,9 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
 import dev.ferriarnus.tinkersjewelry.items.ItemRegistry;
@@ -36,13 +34,14 @@ public class TinkersJewelry {
 	// Directly reference a slf4j logger
 	private static final Logger LOGGER = LogUtils.getLogger();
 	public static final String MODID = "tinkersjewelry";
-	public static final TagKey<Item> JEWELRY = ItemTags.create(new ResourceLocation(MODID, "modifiable/jewelry"));
+	public static final TagKey<Item> JEWELRY = ItemTags.create(ResourceLocation.parse(MODID + ":modifiable/jewelry"));
 
 
 	public TinkersJewelry(IEventBus modEventBus) { 
 		
         modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
-		NeoForge.EVENT_BUS.addListener(this::commonSetup);
+
+		CuriosModifierHooks.init();
 
 		JewelryToolStats.register();
 
@@ -56,10 +55,6 @@ public class TinkersJewelry {
 		JewelryMenus.register(modEventBus);
 	}
 
-	public void commonSetup(FMLCommonSetupEvent event) {
-		CuriosModifierHooks.init();
-	}
-	
 	public void gatherData(final GatherDataEvent event) {
 		DataGenerator generator = event.getGenerator();
 		boolean server = event.includeServer();

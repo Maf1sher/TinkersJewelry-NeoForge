@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.materials.stats.MaterialStatsId;
 import javax.annotation.Nullable;
 
 public class GemMaterialContent extends AbstractMaterialContent {
-    public static final ResourceLocation ID = new ResourceLocation(TinkersJewelry.MODID, "gem_material");
+    public static final ResourceLocation ID = ResourceLocation.parse(TinkersJewelry.MODID + ":gem_material");
 
     public GemMaterialContent(MaterialVariantId materialVariant, boolean detailed) {
         super(materialVariant, detailed);

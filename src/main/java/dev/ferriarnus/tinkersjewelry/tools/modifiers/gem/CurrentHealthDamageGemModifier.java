@@ -33,7 +33,7 @@ public class CurrentHealthDamageGemModifier extends AbstractGemModifier {
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = (0.1 * level * amp);
-        attributeModifiers.put(ALObjects.Attributes.CURRENT_HP_DAMAGE.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:currenthealtdamagegem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(ALObjects.Attributes.CURRENT_HP_DAMAGE.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:currenthealtdamagegem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

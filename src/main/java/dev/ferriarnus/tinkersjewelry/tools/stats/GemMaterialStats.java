@@ -16,7 +16,7 @@ import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 
 public record GemMaterialStats() implements IMaterialStats {
 	
-	public static final MaterialStatsId ID = new MaterialStatsId(new ResourceLocation(TinkersJewelry.MODID, "gem"));
+	public static final MaterialStatsId ID = new MaterialStatsId(ResourceLocation.parse(TinkersJewelry.MODID + ":gem"));
 	public static final GemMaterialStats INSTANCE = new GemMaterialStats();
 	public static final MaterialStatType<GemMaterialStats> TYPE = new MaterialStatType<>(ID, INSTANCE, new SingletonLoader<>(INSTANCE));
 	private static final List<Component> EMPTY = Collections.singletonList(Component.empty());

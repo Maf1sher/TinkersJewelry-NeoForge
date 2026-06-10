@@ -14,9 +14,9 @@ import slimeknights.tconstruct.library.client.book.sectiontransformer.materials.
 import slimeknights.tconstruct.shared.CommonsClientEvents;
 
 public class JewerlyBook {
-    private static final ResourceLocation JEWELRY_BOOK_RL = new ResourceLocation(TinkersJewelry.MODID, "jewelry");
-    public static final ResourceLocation PLAIN_RING = new ResourceLocation(TinkersJewelry.MODID, "plain_ring");
-    public static final ResourceLocation GEM = new ResourceLocation(TinkersJewelry.MODID, "gem");
+    private static final ResourceLocation JEWELRY_BOOK_RL = ResourceLocation.parse(TinkersJewelry.MODID + ":jewelry");
+    public static final ResourceLocation PLAIN_RING = ResourceLocation.parse(TinkersJewelry.MODID + ":plain_ring");
+    public static final ResourceLocation GEM = ResourceLocation.parse(TinkersJewelry.MODID + ":gem");
     public static final BookData JEWELRY_BOOK = BookLoader.registerBook(JEWELRY_BOOK_RL, false, false);
 
     public static void initBook() {
@@ -31,7 +31,7 @@ public class JewerlyBook {
         JEWELRY_BOOK.addTransformer(ToolTagInjectorTransformer.INSTANCE);
         JEWELRY_BOOK.addTransformer(ModifierTagInjectorTransformer.INSTANCE);
 
-        JEWELRY_BOOK.addRepository(new FileRepository(new ResourceLocation(TinkersJewelry.MODID, "book/jewelry")));
+        JEWELRY_BOOK.addRepository(new FileRepository(ResourceLocation.parse(TinkersJewelry.MODID + ":book/jewelry")));
         JEWELRY_BOOK.addTransformer(BookTransformer.indexTranformer());
         JEWELRY_BOOK.addTransformer(TierRangeMaterialSectionTransformer.INSTANCE);
         // padding needs to be last to ensure page counts are right

@@ -33,7 +33,7 @@ public class LifestealGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId()) - 1;
         double effect = (0.1 + level * 0.05) * amp;
-        attributeModifiers.put(ALObjects.Attributes.LIFE_STEAL.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:lifestealgem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(ALObjects.Attributes.LIFE_STEAL.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:lifestealgem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

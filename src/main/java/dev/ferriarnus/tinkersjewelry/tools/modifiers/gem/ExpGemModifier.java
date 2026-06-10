@@ -33,7 +33,7 @@ public class ExpGemModifier extends AbstractGemModifier{
         int level = toolStack.getModifierLevel(modifier.getId());
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         double effect = 0.20 * level * amp;
-        attributeModifiers.put(ALObjects.Attributes.EXPERIENCE_GAINED.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:expgem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(ALObjects.Attributes.EXPERIENCE_GAINED.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:expgem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

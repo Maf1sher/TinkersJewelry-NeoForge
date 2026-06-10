@@ -17,14 +17,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.neoforged.neoforge.common.util.FakePlayer;
-import net.neoforged.neoforge.event.entity.living.LivingAttackEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod.EventBusSubscriber;
-import net.neoforged.fml.common.Mod.EventBusSubscriber.Bus;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
@@ -40,7 +39,7 @@ import java.util.List;
 
 import static slimeknights.tconstruct.tools.logic.ModifierEvents.SOULBOUND;
 
-@EventBusSubscriber(bus = Bus.FORGE)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
 public class DamageItemEvents {
 
 	private static final String SOULBOUND_SLOT = "curios_soulbound";
@@ -67,7 +66,7 @@ public class DamageItemEvents {
 	
 	// Entity damage based damage
 	@SubscribeEvent
-	static void onAttackEntity(LivingAttackEvent event) {
+	static void onAttackEntity(LivingIncomingDamageEvent event) {
 		//hurt player (or entity) (thorns, flames, teleport ...)
 		CuriosApi.getCuriosInventory(event.getEntity()).ifPresent(handler -> {
 			IItemHandlerModifiable curios = handler.getEquippedCurios();

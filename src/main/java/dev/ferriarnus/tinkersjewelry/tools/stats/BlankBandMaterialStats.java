@@ -19,7 +19,7 @@ import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 public record BlankBandMaterialStats(int durability, float amplification) implements IRepairableMaterialStats{
 	
-	public static final MaterialStatsId ID = new MaterialStatsId(new ResourceLocation(TinkersJewelry.MODID, "plain_ring"));
+	public static final MaterialStatsId ID = new MaterialStatsId(ResourceLocation.parse(TinkersJewelry.MODID + ":plain_ring"));
 	public static final MaterialStatType<BlankBandMaterialStats> TYPE = new MaterialStatType<>(ID, new BlankBandMaterialStats(100, 1f),
 			RecordLoadable.create(IRepairableMaterialStats.DURABILITY_FIELD, FloatLoadable.FROM_ZERO.requiredField("amplification", BlankBandMaterialStats::amplification), BlankBandMaterialStats::new));
 	private static final List<Component> DESCRIPTION = ImmutableList.of(ToolStats.DURABILITY.getDescription(), JewelryToolStats.AMPLIFICATION.getDescription());

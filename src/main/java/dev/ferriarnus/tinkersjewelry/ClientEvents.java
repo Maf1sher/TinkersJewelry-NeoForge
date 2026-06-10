@@ -10,8 +10,8 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class ClientEvents {
 
     @SubscribeEvent
-    static void playerTick(net.neoforged.neoforge.event.TickEvent.PlayerTickEvent event) {
-        if (ModClientEvents.SUBSPACE.isDown() && event.player.getAttribute(GemAttributes.SUBSPACE.get()).getValue() >= 1) {
+    static void playerTick(net.neoforged.neoforge.event.tick.PlayerTickEvent event) {
+        if (ModClientEvents.SUBSPACE.isDown() && event.player.getAttribute(GemAttributes.SUBSPACE).getValue() >= 1) {
             PacketDistributor.sendToServer(new SubSpacePacket());
         }
     }

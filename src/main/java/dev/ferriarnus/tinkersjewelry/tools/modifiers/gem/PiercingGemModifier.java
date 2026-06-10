@@ -33,7 +33,7 @@ public class PiercingGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId()) - 1;
         double effect = (0.1 + level * 0.05)* amp;
-        attributeModifiers.put(ALObjects.Attributes.ARMOR_PIERCE.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:fireresistancegem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(ALObjects.Attributes.ARMOR_PIERCE.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:fireresistancegem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

@@ -91,14 +91,14 @@ configurations {
 }
 
 dependencies {
-    implementation 'slimeknights.mantle:Mantle:1.21.1-1.12.+'
-    implementation 'slimeknights.tconstruct:TConstruct:1.21.1-3.12.+'
+    implementation files('../../Tinkers-1.21.1-NeoForge/Mantle-NeoForge/build/libs/Mantle-1.21.1-1.12.DEV.4bdbb116.jar')
+    implementation files('../../Tinkers-1.21.1-NeoForge/TinkersConstruct-NeoForge/build/libs/TinkersConstruct-1.21.1-3.12.0.DEV.2a9a1fd27b.jar')
 
-    compileOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}+${minecraft_version}:api")
-    runtimeOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}+${minecraft_version}")
+    compileOnly("curse.maven:curios-309927:6529130")
+    runtimeOnly("curse.maven:curios-309927:6529130")
 
-    compileOnly("dev.shadowsoffire:Placebo:${minecraft_version}-${placebo_version}")
-    compileOnly("dev.shadowsoffire:ApothicAttributes:${minecraft_version}-${attributesLib_version}")
+    compileOnly("curse.maven:placebo-283644:6926281")
+    compileOnly("curse.maven:apothic-attributes-898963:7445079")
 
     compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
@@ -111,11 +111,6 @@ dependencies {
     implementation("io.github.llamalad7:mixinextras-neoforge:0.4.1")
     compileOnly("io.github.llamalad7:mixinextras-common:0.4.1")
     annotationProcessor 'org.spongepowered:mixin:0.8.7:processor'
-}
-
-mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-    config "${mod_id}.mixins.json"
 }
 
 jar {
@@ -160,11 +155,4 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-}
-
-idea {
-    module {
-        downloadSources = true
-        downloadJavadoc = true
-    }
 }

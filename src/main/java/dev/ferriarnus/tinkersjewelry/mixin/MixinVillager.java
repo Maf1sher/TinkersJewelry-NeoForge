@@ -14,7 +14,7 @@ public class MixinVillager {
 
     @Inject(method = "getPlayerReputation", at = @At("RETURN"), cancellable = true)
     private void tradeAttribute(Player player, CallbackInfoReturnable<Integer> cir) {
-        double playerRep = player.getAttributeValue(GemAttributes.TRADE.get());
+        double playerRep = player.getAttributeValue(GemAttributes.TRADE);
         cir.setReturnValue((int) Mth.clamp(cir.getReturnValue() + playerRep, -30, 30));
     }
 }
