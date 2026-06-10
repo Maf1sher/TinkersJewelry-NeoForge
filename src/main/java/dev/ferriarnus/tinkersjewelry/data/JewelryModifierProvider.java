@@ -57,7 +57,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                         .build());
 
         buildModifier(JewelryModifiers.ANTI_HEAL_GEM)
-                .addModule(EnemyEffectModule.builder(ALObjects.MobEffects.GRIEVOUS)
+                .addModule(EnemyEffectModule.builder(ALObjects.MobEffects.GRIEVOUS.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(50).variable(LEVEL).multiply()
@@ -68,7 +68,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.ARMOR_GEM)
-                .addModule(AttributeModifierModule.builder(Attributes.ARMOR, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(Attributes.ARMOR.value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.ARMOR_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -80,7 +80,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.CONDUIT_GEM)
-                .addModule(SelfEffectModule.builder(MobEffects.CONDUIT_POWER)
+                .addModule(SelfEffectModule.builder(MobEffects.CONDUIT_POWER.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(200).variable(LEVEL).multiply()
@@ -88,7 +88,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.DARKNESS_GEM)
-                .addModule(EnemyEffectModule.builder(MobEffects.DARKNESS)
+                .addModule(EnemyEffectModule.builder(MobEffects.DARKNESS.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(200).variable(LEVEL).multiply()
@@ -109,7 +109,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.ENDERFERENCE_GEM)
-                .addModule(EnemyEffectModule.builder(TinkerModifiers.enderferenceEffect)
+                .addModule(EnemyEffectModule.builder(TinkerModifiers.enderferenceEffect.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(100).variable(LEVEL).multiply()
@@ -130,7 +130,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.FIRERESISTANCE_GEM)
-                .addModule(SelfEffectModule.builder(MobEffects.FIRE_RESISTANCE)
+                .addModule(SelfEffectModule.builder(MobEffects.FIRE_RESISTANCE.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(200).variable(LEVEL).multiply()
@@ -148,7 +148,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.FORTUNE_GEM)
-                .addModule(AttributeModifierModule.builder(GemAttributes.FORTUNE, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(GemAttributes.FORTUNE.get(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.FORTUNE_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -158,7 +158,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.GLOWING_GEM)
-                .addModule(EnemyEffectModule.builder(MobEffects.GLOWING)
+                .addModule(EnemyEffectModule.builder(MobEffects.GLOWING.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(200).variable(LEVEL).multiply()
@@ -168,7 +168,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.GRAVITY_GEM)
-                .addModule(AttributeModifierModule.builder(NeoForgeMod.ENTITY_GRAVITY.get().value(), AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(NeoForgeMod.ENTITY_GRAVITY.get().value().value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.GRAVITY_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -179,7 +179,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.HEALTH_GEM)
-                .addModule(AttributeModifierModule.builder(Attributes.MAX_HEALTH, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(Attributes.MAX_HEALTH.value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.HEALTH_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -190,7 +190,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.KNOCKBACK_GEM)
-                .addModule(AttributeModifierModule.builder(Attributes.ATTACK_KNOCKBACK, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(Attributes.ATTACK_KNOCKBACK.value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.KNOCKBACK_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -215,7 +215,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.LUCK_GEM)
-                .addModule(AttributeModifierModule.builder(Attributes.LUCK, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(Attributes.LUCK.value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.LUCK_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -235,7 +235,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.NIGHTVISION_GEM)
-                .addModule(SelfEffectModule.builder(MobEffects.NIGHT_VISION)
+                .addModule(SelfEffectModule.builder(MobEffects.NIGHT_VISION.value())
                         .withDamage(f -> f.constant(5).buildFormula())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -257,7 +257,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.POISON_GEM)
-                .addModule(EnemyEffectModule.builder(MobEffects.POISON)
+                .addModule(EnemyEffectModule.builder(MobEffects.POISON.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(100).variable(LEVEL).multiply()
@@ -267,7 +267,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.RAGE_GEM)
-                .addModule(AttributeModifierModule.builder(Attributes.ATTACK_SPEED, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(Attributes.ATTACK_SPEED.value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.RAGE_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -280,12 +280,12 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.REACH_GEM)
-                .addModule(AttributeModifierModule.builder(NeoForgeMod.ENTITY_REACH.get().value(), AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(NeoForgeMod.ENTITY_REACH.get().value().value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.REACH_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .variable(LEVEL).customVariable("amplification").multiply().build())
-                .addModule(AttributeModifierModule.builder(NeoForgeMod.BLOCK_REACH.get().value(), AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(NeoForgeMod.BLOCK_REACH.get().value().value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.REACH_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -295,7 +295,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.RESISTANCE_GEM)
-                .addModule(SelfEffectModule.builder(MobEffects.DAMAGE_RESISTANCE)
+                .addModule(SelfEffectModule.builder(MobEffects.DAMAGE_RESISTANCE.value())
                         .withAmplification(f -> f.variable(LEVEL).constant(1).subtract().buildFormula())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -303,7 +303,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.SILK_GEM)
-                .addModule(AttributeModifierModule.builder(GemAttributes.SILK, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(GemAttributes.SILK.get(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.SILK_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -313,7 +313,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.SPEED_GEM)
-                .addModule(AttributeModifierModule.builder(Attributes.MOVEMENT_SPEED, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(Attributes.MOVEMENT_SPEED.value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.SPEED_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -326,7 +326,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.SWIM_GEM)
-                .addModule(AttributeModifierModule.builder(NeoForgeMod.SWIM_SPEED.get().value(), AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(NeoForgeMod.SWIM_SPEED.get().value().value(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.SWIM_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -336,7 +336,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.TRADE_GEM)
-                .addModule(AttributeModifierModule.builder(GemAttributes.TRADE, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(GemAttributes.TRADE.get(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.TRADE_GEM.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -345,7 +345,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.WATERBREATHING_GEM)
-                .addModule(SelfEffectModule.builder(MobEffects.WATER_BREATHING)
+                .addModule(SelfEffectModule.builder(MobEffects.WATER_BREATHING.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(200).variable(LEVEL).multiply()
@@ -353,7 +353,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .tooltipDisplay(BasicModifier.TooltipDisplay.ALWAYS);
 
         buildModifier(JewelryModifiers.WITHER_GEM)
-                .addModule(EnemyEffectModule.builder(MobEffects.WITHER)
+                .addModule(EnemyEffectModule.builder(MobEffects.WITHER.value())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
                         .constant(50).variable(LEVEL).multiply()
@@ -364,7 +364,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
 
 
         buildModifier(JewelryModifiers.MAGNETIC)
-                .addModule(SelfEffectModule.builder(TinkerModifiers.magneticEffect)
+                .addModule(SelfEffectModule.builder(TinkerModifiers.magneticEffect.value())
                         .withDamage(f -> f.constant(0).buildFormula())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()
@@ -391,7 +391,7 @@ public class JewelryModifierProvider extends AbstractModifierProvider {
                 .addModule(StatBoostModule.multiplyBase(ToolStats.DURABILITY).eachLevel(0.1f));
 
         buildModifier(JewelryModifiers.SUBSPACE)
-                .addModule(AttributeModifierModule.builder(GemAttributes.SUBSPACE, AttributeModifier.Operation.ADD_VALUE)
+                .addModule(AttributeModifierModule.builder(GemAttributes.SUBSPACE.get(), AttributeModifier.Operation.ADD_VALUE)
                         .uniqueFrom(JewelryModifiers.SUBSPACE.location())
                         .customVariable("amplification", new ToolStatVariable(JewelryToolStats.AMPLIFICATION))
                         .formula()

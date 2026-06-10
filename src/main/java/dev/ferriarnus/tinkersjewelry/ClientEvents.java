@@ -11,7 +11,7 @@ public class ClientEvents {
 
     @SubscribeEvent
     static void playerTick(net.neoforged.neoforge.event.tick.PlayerTickEvent event) {
-        if (ModClientEvents.SUBSPACE.isDown() && event.player.getAttribute(GemAttributes.SUBSPACE).getValue() >= 1) {
+        if (ModClientEvents.SUBSPACE.isDown() && event.getEntity().getAttribute(GemAttributes.SUBSPACE).getValue() >= 1) {
             PacketDistributor.sendToServer(new SubSpacePacket());
         }
     }

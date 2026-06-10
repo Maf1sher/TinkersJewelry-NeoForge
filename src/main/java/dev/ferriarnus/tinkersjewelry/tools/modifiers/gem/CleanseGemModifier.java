@@ -30,7 +30,7 @@ public class CleanseGemModifier extends AbstractGemModifier{
         }
         List<MobEffectInstance> badEffects = entity.getActiveEffects().stream().filter(e -> !e.getEffect().isBeneficial()).toList();
         ToolStack toolStack = ToolStack.from(stack);
-        int level = toolStack.getModifierLevel(JewelryModifiers.CLEANSE_GEM.getId());
+        int level = toolStack.getModifierLevel(JewelryModifiers.CLEANSE_GEM.getModifierId());
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         for (MobEffectInstance effect : badEffects) {
             int duration = effect.getDuration();

@@ -189,7 +189,7 @@ public class DamageItemEvents {
 					ItemStack stackInSlot = curios.getStackInSlot(i);
 					if (stackInSlot.getItem() instanceof ModifiableItem) {
 						ToolStack tool = ToolStack.from(stackInSlot);
-						if (!tool.isBroken() && tool.getModifierLevel(JewelryModifiers.UNDYING.getId()) > 0) {
+						if (!tool.isBroken() && tool.getModifierLevel(JewelryModifiers.UNDYING.getModifierId()) > 0) {
 							entity.setHealth(1.0F);
 							entity.removeAllEffects();
 							entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));

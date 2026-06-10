@@ -6,9 +6,9 @@ import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import slimeknights.mantle.data.loadable.Loadables;
@@ -52,11 +52,11 @@ public record EnemyEffectModule(MobEffect effect, ToolFormula duration, ToolForm
 
     @Override
     public void hurtEnemy(ItemStack stack, DamageSource source, double damage, @Nullable LivingEntity defender, @Nullable LivingEntity attacker, ModifierEntry modifier) {
-        if (defender == null || defender.hasEffect(effect)) {
+        if (defender == null || defender.hasEffect(Holder.direct(effect))) {
             return;
         }
         ToolStack tool = ToolStack.from(stack);
-        defender.addEffect(new MobEffectInstance(effect, Mth.floor(duration.apply(tool, modifier)), Mth.floor(amplification.apply(tool, modifier))));
+        defender.addEffect(new MobEffectInstance(Holder.direct(effect), Mth.floor(duration.apply(tool, modifier)), Mth.floor(amplification.apply(tool, modifier))));
     }
 
     public static Builder builder(MobEffect effect) {

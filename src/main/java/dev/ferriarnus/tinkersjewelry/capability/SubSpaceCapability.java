@@ -1,7 +1,9 @@
 package dev.ferriarnus.tinkersjewelry.capability;
 
+import com.mojang.serialization.Codec;
 import dev.ferriarnus.tinkersjewelry.TinkersJewelry;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -17,8 +19,14 @@ public class SubSpaceCapability {
     public static final Supplier<AttachmentType<ItemStackHandler>> SUBSPACE =
             ATTACHMENTS.register("subspace", () ->
                     AttachmentType.builder(() -> new ItemStackHandler(6 * 9))
-                            .serialize(ItemStackHandler::serializeNBT)
-                            .deserialize((handler, tag) -> handler.deserializeNBT(tag))
+                            .serialize(CompoundTag.CODEC.xmap(
+                                    tag -> {
+                                        ItemStackHandler handler = new ItemStackHandler(6 * 9);
+                                        handler.deserializeNBT((CompoundTag) tag);
+                                        return handler;
+                                    },
+                                    handler -> handler.serializeNBT()
+                            ))
                             .copyOnDeath()
                             .build()
             );

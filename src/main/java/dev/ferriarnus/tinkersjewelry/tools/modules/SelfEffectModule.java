@@ -6,9 +6,9 @@ import dev.ferriarnus.tinkersjewelry.tools.hooks.HurtEnemyHook;
 import dev.ferriarnus.tinkersjewelry.tools.hooks.HurtUserHook;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -58,8 +58,8 @@ public record SelfEffectModule(MobEffect effect, ToolFormula duration, ToolFormu
         LivingEntity entity = slotContext.entity();
         ToolStack tool = ToolStack.from(stack);
         int i = Mth.floor(duration.apply(tool, entry));
-        if (!entity.hasEffect(effect) || entity.getEffect(effect).getDuration() < i / 2) {
-            entity.addEffect(new MobEffectInstance(effect, i, Mth.floor(amplification.apply(tool, entry)), false, false));
+        if (!entity.hasEffect(Holder.direct(effect)) || entity.getEffect(Holder.direct(effect)).getDuration() < i / 2) {
+            entity.addEffect(new MobEffectInstance(Holder.direct(effect), i, Mth.floor(amplification.apply(tool, entry)), false, false));
             ToolDamageUtil.damage(tool, Math.round(damage.apply(tool, entry)), entity, stack);
         }
     }

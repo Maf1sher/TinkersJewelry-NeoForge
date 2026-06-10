@@ -28,7 +28,7 @@ public class EnderclearanceGemModifier extends AbstractGemModifier {
         if (!source.isIndirect()) {
             if (attacker instanceof LivingEntity entity) {
                 ToolStack tool = ToolStack.from(stack);
-                int level = tool.getModifierLevel(JewelryModifiers.ENDERCLEARANCE_GEM.getId());
+                int level = tool.getModifierLevel(JewelryModifiers.ENDERCLEARANCE_GEM.getModifierId());
 
                 if (TConstruct.RANDOM.nextFloat() < (float)level * 0.25F) {
                     TeleportHelper.randomNearbyTeleport(entity, EnderclearanceTeleportEvent.TELEPORT_FACTORY);

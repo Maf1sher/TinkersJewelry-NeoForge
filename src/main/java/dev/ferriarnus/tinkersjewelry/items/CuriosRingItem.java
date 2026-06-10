@@ -16,8 +16,10 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import slimeknights.mantle.client.TooltipKey;
@@ -119,23 +121,21 @@ public class CuriosRingItem extends ModifiableItem implements ICurioItem{
 	}
 
 	@Override
-	public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
+	public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack) {
 		ToolStack tool = ToolStack.from(stack);
-		Multimap<Attribute, AttributeModifier> multimap = HashMultimap.create();
-		if (tool.isBroken()) {
-			return multimap;
-		}
+		Multimap<Holder<Attribute>, AttributeModifier> multimap = HashMultimap.create();
 		if (tool.isBroken()) {
 			return multimap;
 		}
 		for (ModifierEntry entry : tool.getModifierList()) {
-			multimap.putAll(entry.getHook(CuriosModifierHooks.ATTRIBUTE).getAttributeModifiers(slotContext, uuid, stack, entry));
+			Multimap<Attribute, AttributeModifier> attributes = entry.getHook(CuriosModifierHooks.ATTRIBUTE).getAttributeModifiers(slotContext, uuid, stack, entry);
+			attributes.forEach((attr, mod) -> multimap.put(BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attr), mod));
 		}
 		return multimap;
 	}
 	
 	@Override
-	public List<Component> getSlotsTooltip(List<Component> tooltips, ItemStack stack) {
+	public List<Component> getSlotsTooltip(List<Component> tooltips, TooltipContext context, ItemStack stack) {
 		return Collections.emptyList();
 	}
 }
