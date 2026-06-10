@@ -98,10 +98,6 @@
   "modifier.tinkersjewelry.health_gem.flavor": "Gives bonus Health",
   "modifier.tinkersjewelry.health_gem": "Health",
 
-  "modifier.tinkersjewelry.reach_gem.description": "Gives bonus entity reach",
-  "modifier.tinkersjewelry.reach_gem.flavor": "Gives bonus entity reach",
-  "modifier.tinkersjewelry.reach_gem": "Reach",
-
   "modifier.tinkersjewelry.trade_gem.description": "Gives lower prizes while trading with villagers",
   "modifier.tinkersjewelry.trade_gem.flavor": "Gives lower prizes while trading with villagers",
   "modifier.tinkersjewelry.trade_gem": "Trade",
@@ -121,10 +117,6 @@
   "modifier.tinkersjewelry.swim_gem.description": "Increases the wearers swimming speed",
   "modifier.tinkersjewelry.swim_gem.flavor": "Increases the wearers swimming speed",
   "modifier.tinkersjewelry.swim_gem": "Swim Speed",
-
-  "modifier.tinkersjewelry.gravity_gem.description": "Reduces Gravity",
-  "modifier.tinkersjewelry.gravity_gem.flavor": "Reduces Gravity",
-  "modifier.tinkersjewelry.gravity_gem": "Gravity",
 
   "modifier.tinkersjewelry.current_health_damage_gem.description": "Applies additional current health damage",
   "modifier.tinkersjewelry.current_health_damage_gem.flavor": "Applies additional current health damage",

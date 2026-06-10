@@ -31,7 +31,6 @@ public class JewelryModifiers {
 	public static final ModifierId FIRERESISTANCE_GEM = id("fireresistance_gem");
 	public static final ModifierId FORTUNE_GEM = id("fortune_gem");
 	public static final ModifierId GLOWING_GEM = id("glowing_gem");
-	public static final ModifierId GRAVITY_GEM = id("gravity_gem");
 	public static final ModifierId HEALTH_GEM = id("health_gem");
 	public static final ModifierId KNOCKBACK_GEM = id("knockback_gem");
 	public static final ModifierId LIFESTEAL_GEM = id("lifesteal_gem");
@@ -40,7 +39,6 @@ public class JewelryModifiers {
 	public static final ModifierId PIERCING_GEM = id("piercing_gem");
 	public static final ModifierId NIGHTVISION_GEM = id("nightvision_gem");
 	public static final ModifierId RAGE_GEM = id("rage_gem");
-	public static final ModifierId REACH_GEM = id("reach_gem");
 	public static final ModifierId RESISTANCE_GEM = id("resistance_gem");
 	public static final ModifierId SILK_GEM = id("silk_gem");
 	public static final ModifierId SPEED_GEM = id("speed_gem");
