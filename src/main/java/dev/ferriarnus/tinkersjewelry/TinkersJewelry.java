@@ -10,6 +10,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 import dev.ferriarnus.tinkersjewelry.items.ItemRegistry;
@@ -36,9 +37,8 @@ public class TinkersJewelry {
 	public static final String MODID = "tinkersjewelry";
 	public static final TagKey<Item> JEWELRY = ItemTags.create(ResourceLocation.parse(MODID + ":modifiable/jewelry"));
 
-
 	public TinkersJewelry(IEventBus modEventBus) { 
-		
+
 		ItemRegistry.register(modEventBus);
 		JewelryModifiers.register(modEventBus);
 		GemAttributes.register(modEventBus);
