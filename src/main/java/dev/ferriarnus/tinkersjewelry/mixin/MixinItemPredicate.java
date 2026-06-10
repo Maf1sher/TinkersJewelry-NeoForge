@@ -7,14 +7,13 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 import javax.annotation.Nullable;
-import java.util.Map;
 
 @Mixin(ItemPredicate.class)
 public class MixinItemPredicate implements IEntityAwarePredicate {
@@ -28,18 +27,18 @@ public class MixinItemPredicate implements IEntityAwarePredicate {
         this.entity = entity;
     }
 
-    @WrapOperation(method = "matches", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/EnchantmentPredicate;containedIn(Ljava/util/Map;)Z"))
-    public boolean matchEnchantment(EnchantmentPredicate instance, Map<Enchantment, Integer> integer, Operation<Boolean> original) {
+    @WrapOperation(method = "matches", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/EnchantmentPredicate;containedIn(Lnet/minecraft/world/item/enchantment/ItemEnchantments;)Z"))
+    public boolean matchEnchantment(EnchantmentPredicate instance, ItemEnchantments enchantments, Operation<Boolean> original) {
         if (entity == null) {
-            return original.call(instance, integer);
+            return original.call(instance, enchantments);
         }
         double value = 0;
-        if (instance.enchantment == Enchantments.BLOCK_FORTUNE) {
+        if (instance.enchantment != null && instance.enchantment.is(Enchantments.FORTUNE)) {
             value = entity.getAttributeValue(GemAttributes.FORTUNE.get());
         }
-        if (instance.enchantment == Enchantments.SILK_TOUCH) {
+        if (instance.enchantment != null && instance.enchantment.is(Enchantments.SILK_TOUCH)) {
             value = entity.getAttributeValue(GemAttributes.SILK.get());
         }
-        return original.call(instance, integer) || value > 0;
+        return original.call(instance, enchantments) || value > 0;
     }
 }
