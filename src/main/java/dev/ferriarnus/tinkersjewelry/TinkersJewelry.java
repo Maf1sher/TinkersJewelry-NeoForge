@@ -1,5 +1,6 @@
 package dev.ferriarnus.tinkersjewelry;
 
+import dev.ferriarnus.tinkersjewelry.capability.SubSpaceCapability;
 import dev.ferriarnus.tinkersjewelry.data.*;
 import dev.ferriarnus.tinkersjewelry.menu.JewelryMenus;
 import dev.ferriarnus.tinkersjewelry.tools.hooks.CuriosModifierHooks;
@@ -51,6 +52,7 @@ public class TinkersJewelry {
 		ItemRegistry.register(modEventBus);
 		JewelryModifiers.register(modEventBus);
 		GemAttributes.register(modEventBus);
+		SubSpaceCapability.ATTACHMENTS.register(modEventBus);
 		JewelryMenus.register(modEventBus);
 	}
 

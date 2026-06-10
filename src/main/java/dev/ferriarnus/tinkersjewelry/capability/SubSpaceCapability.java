@@ -1,68 +1,25 @@
 package dev.ferriarnus.tinkersjewelry.capability;
 
-import dev.ferriarnus.tinkersjewelry.GemAttributes;
 import dev.ferriarnus.tinkersjewelry.TinkersJewelry;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.capabilities.*;
-import dummy.remove;
-import dummy.remove;
-import dummy.remove;
+import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-public class SubSpaceCapability implements INBTSerializable<CompoundTag> {
+import java.util.function.Supplier;
 
-    public static final Capability<SubSpaceCapability> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {});
+public class SubSpaceCapability {
 
-    private final ItemStackHandler inventory;
+    public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS =
+            DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, TinkersJewelry.MODID);
 
-    public SubSpaceCapability() {
-        this.inventory = new ItemStackHandler(6*9);
-    }
-
-    @Override
-    public CompoundTag serializeNBT() {
-        return inventory.serializeNBT();
-    }
-
-    @Override
-    public void deserializeNBT(CompoundTag compoundTag) {
-        inventory.deserializeNBT(compoundTag);
-    }
-
-    public ItemStackHandler getInventory() {
-        return inventory;
-    }
-
-    public static class Provider implements ICapabilitySerializable<CompoundTag>, INBTSerializable<CompoundTag> {
-
-        public static final ResourceLocation IDENTIFIER = new ResourceLocation(TinkersJewelry.MODID, "subspace");
-        private final SubSpaceCapability instance = new SubSpaceCapability();
-        private final LazyOptional<SubSpaceCapability> optional = LazyOptional.of(() -> instance);
-
-        public Provider() {
-
-        }
-
-        @Override
-        public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction direction) {
-            if (capability == INSTANCE) {
-                return optional.cast();
-            }
-            return LazyOptional.empty();
-        }
-
-        @Override
-        public CompoundTag serializeNBT() {
-            return instance.serializeNBT();
-        }
-
-        @Override
-        public void deserializeNBT(CompoundTag compoundTag) {
-            instance.deserializeNBT(compoundTag);
-        }
-    }
+    public static final Supplier<AttachmentType<ItemStackHandler>> SUBSPACE =
+            ATTACHMENTS.register("subspace", () ->
+                    AttachmentType.builder(() -> new ItemStackHandler(6 * 9))
+                            .serialize((handler, tag) -> handler.serializeNBT())
+                            .deserialize((handler, tag) -> handler.deserializeNBT((CompoundTag) tag))
+                            .copyOnDeath()
+                            .build()
+            );
 }

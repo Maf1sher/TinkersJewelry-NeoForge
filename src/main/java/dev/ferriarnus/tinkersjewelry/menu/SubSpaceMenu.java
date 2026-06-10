@@ -20,11 +20,11 @@ public class SubSpaceMenu extends AbstractContainerMenu {
         super(JewelryMenus.SUB_SPACE_MENU.get(), id);
         containerRows = Mth.floor(playerInventory.player.getAttribute(GemAttributes.SUBSPACE.get()).getValue());
         int i = (this.containerRows - 4) * 18;
-        var cap = playerInventory.player.getCapability(SubSpaceCapability.INSTANCE);
-        if (cap.isPresent()) {
+        var handler = playerInventory.player.getData(SubSpaceCapability.SUBSPACE.get());
+        if (handler != null) {
             for(int j = 0; j < this.containerRows; ++j) {
                 for(int k = 0; k < 9; ++k) {
-                    this.addSlot(new SlotItemHandler(cap.resolve().get().getInventory(), k + j * 9, 8 + k * 18, 18 + j * 18));
+                    this.addSlot(new SlotItemHandler(handler, k + j * 9, 8 + k * 18, 18 + j * 18));
                 }
             }
         }
