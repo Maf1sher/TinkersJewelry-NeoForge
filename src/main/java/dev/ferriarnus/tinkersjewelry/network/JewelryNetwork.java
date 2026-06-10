@@ -1,31 +1,23 @@
 package dev.ferriarnus.tinkersjewelry.network;
 
 import dev.ferriarnus.tinkersjewelry.TinkersJewelry;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.network.NetworkDirection;
-import slimeknights.mantle.network.NetworkWrapper;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
-public class JewelryNetwork extends NetworkWrapper {
-    private static JewelryNetwork instance;
+@EventBusSubscriber(modid = TinkersJewelry.MODID, bus = EventBusSubscriber.Bus.MOD)
+public class JewelryNetwork {
 
-    public JewelryNetwork() {
-        super(new ResourceLocation(TinkersJewelry.MODID, "network"));
-    }
+    private static final String VERSION = "1";
 
-    public static JewelryNetwork getInstance() {
-        if (instance == null) {
-            throw new IllegalStateException("Attempt to call network getInstance before network is setup");
-        }
-        return instance;
-    }
-
-    public static void setup() {
-        if (instance != null) {
-            return;
-        }
-        instance = new JewelryNetwork();
-
-        instance.registerPacket(SubSpacePacket.class, SubSpacePacket::new, NetworkDirection.PLAY_TO_SERVER);
-
+    @SubscribeEvent
+    public static void registerPayloads(final RegisterPayloadHandlersEvent event) {
+        final PayloadRegistrar registrar = event.registrar(VERSION);
+        registrar.playToServer(
+                SubSpacePacket.TYPE,
+                SubSpacePacket.STREAM_CODEC,
+                SubSpacePacket::handle
+        );
     }
 }

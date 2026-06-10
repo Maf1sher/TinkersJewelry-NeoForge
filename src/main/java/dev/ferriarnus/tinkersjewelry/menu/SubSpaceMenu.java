@@ -2,7 +2,6 @@ package dev.ferriarnus.tinkersjewelry.menu;
 
 import dev.ferriarnus.tinkersjewelry.GemAttributes;
 import dev.ferriarnus.tinkersjewelry.capability.SubSpaceCapability;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -16,10 +15,6 @@ public class SubSpaceMenu extends AbstractContainerMenu {
 
     private int containerRows;
 
-
-    public SubSpaceMenu(int id, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(id, playerInventory);
-    }
 
     public SubSpaceMenu(int id, Inventory playerInventory) {
         super(JewelryMenus.SUB_SPACE_MENU.get(), id);
