@@ -1,6 +1,6 @@
 {
   "loader": "tconstruct:material",
-  "parent": "forge:item/default",
+  "parent": "neoforge:item/default",
   "textures": {
     "texture": "tinkersjewelry:item/tool/parts/gem"
   }

@@ -1,6 +1,6 @@
 {
   "loader": "tconstruct:tool",
-  "parent": "forge:item/default-tool",
+  "parent": "neoforge:item/default-tool",
   "textures": {
     "gem": "tinkersjewelry:item/tool/ring/gem",
     "plain_ring": "tinkersjewelry:item/tool/ring/plain_ring"
