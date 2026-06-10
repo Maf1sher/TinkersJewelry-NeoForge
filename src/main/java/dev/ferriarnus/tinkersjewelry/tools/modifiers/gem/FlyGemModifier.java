@@ -3,7 +3,7 @@ package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 import net.minecraft.resources.ResourceLocation;
 
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
-import dev.shadowsoffire.attributeslib.api.ALObjects;
+import dev.shadowsoffire.apothic_attributes.api.ALObjects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;

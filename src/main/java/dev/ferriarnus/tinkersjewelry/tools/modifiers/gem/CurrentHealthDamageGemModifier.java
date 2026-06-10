@@ -5,7 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
-import dev.shadowsoffire.attributeslib.api.ALObjects;
+import dev.shadowsoffire.apothic_attributes.api.ALObjects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;

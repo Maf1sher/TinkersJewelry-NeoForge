@@ -4,7 +4,7 @@ import dev.ferriarnus.tinkersjewelry.GemAttributes;
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.modules.*;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
-import dev.shadowsoffire.attributeslib.api.ALObjects;
+import dev.shadowsoffire.apothic_attributes.api.ALObjects;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
