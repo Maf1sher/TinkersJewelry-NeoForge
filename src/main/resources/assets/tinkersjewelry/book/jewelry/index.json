@@ -10,19 +10,7 @@
     "name": "jewelry",
     "data": "sections/jewelry.json",
     "icon": {
-      "item": {
-        "type": "forge:nbt",
-        "item": "tinkersjewelry:ring",
-        "nbt": {
-          "tic_broken": false,
-          "tic_display": true,
-          "Damage": 0,
-          "tic_materials": [
-            "tinkersjewelry:ui_render#plain_ring",
-            "tinkersjewelry:ui_render#gem"
-          ]
-        }
-      }
+      "item": "tinkersjewelry:ring"
     },
     "extraData": {
       "tconstruct:load_tools": { "tag": "tinkersjewelry:modifiable/small", "path": "tools" }
@@ -40,14 +28,7 @@
     "data": "no-load",
     "extraData": { "tconstruct:material_tier": { "type": "tinkersjewelry:plain_ring", "detailed": true }},
     "icon": {
-      "item": {
-        "type": "forge:nbt",
-        "item": "tinkersjewelry:plain_ring",
-        "nbt": {
-          "Material": "tinkersjewelry:ui_render#plain_ring",
-          "tic_display": true
-        }
-      }
+      "item": "tinkersjewelry:plain_ring"
     }
   },
   {
@@ -55,14 +36,7 @@
     "data": "no-load",
     "extraData": { "tconstruct:material_tier": { "type": "tinkersjewelry:gem", "detailed": true } },
     "icon": {
-      "item": {
-        "type": "forge:nbt",
-        "item": "tinkersjewelry:gem",
-        "nbt": {
-          "Material": "tinkersjewelry:ui_render#gem",
-          "tic_display": true
-        }
-      }
+      "item": "tinkersjewelry:gem"
     }
   }
 ]

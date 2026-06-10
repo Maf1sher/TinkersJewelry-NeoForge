@@ -15,6 +15,10 @@ import org.lwjgl.glfw.GLFW;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = TinkersJewelry.MODID, value = Dist.CLIENT)
 public class ModClientEvents {
 
+    static {
+        JewerlyBook.initBook();
+    }
+
     public static final KeyMapping SUBSPACE = new KeyMapping("key.tinkersjewelry.subspace", GLFW.GLFW_KEY_K, "key.categories.tinkersjewelry");
 
     @SubscribeEvent
