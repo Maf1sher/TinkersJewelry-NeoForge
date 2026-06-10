@@ -1,12 +1,13 @@
 package dev.ferriarnus.tinkersjewelry.data;
 
-import java.util.function.Consumer;
-
 import dev.ferriarnus.tinkersjewelry.TinkersJewelry;
 import dev.ferriarnus.tinkersjewelry.items.ItemRegistry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+
+import java.util.concurrent.CompletableFuture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -21,17 +22,12 @@ import slimeknights.tconstruct.tools.data.material.MaterialIds;
 
 public class JewelryMaterialRecipe extends RecipeProvider implements IMaterialRecipeHelper {
 
-	public JewelryMaterialRecipe(PackOutput output) {
-		super(output);
-	}
-	
-	@Override
-	public String getName() {
-		return "Tinkers' Jewelry Material Recipe";
+	public JewelryMaterialRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+		super(output, registries);
 	}
 
 	@Override
-	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+	protected void buildRecipes(RecipeOutput consumer) {
 		String folder = "tools/materials/";
 		materialRecipe(consumer, JewelryMaterials.redstone, Ingredient.of(Items.REDSTONE), 1, 1, folder + "gems/redstone");
 		materialRecipe(consumer, JewelryMaterials.eudialyte, Ingredient.of(ItemRegistry.EUDIALYTE), 1, 1, folder + "gems/blood");
@@ -78,8 +74,8 @@ public class JewelryMaterialRecipe extends RecipeProvider implements IMaterialRe
 
 	}
 
-	public void optionalMaterialRecipe(Consumer<FinishedRecipe> consumer, MaterialVariantId material, TagKey<Item> tag, int value, int needed, String saveName) {
-		Consumer<FinishedRecipe> wrapped = this.withCondition(consumer, this.tagCondition(tag.location().getPath()));
+	public void optionalMaterialRecipe(RecipeOutput consumer, MaterialVariantId material, TagKey<Item> tag, int value, int needed, String saveName) {
+		RecipeOutput wrapped = this.withCondition(consumer, this.tagCondition(tag.location().getPath()));
 		this.materialRecipe(wrapped, material, Ingredient.of(tag), value, needed, null, saveName);
 	}
 

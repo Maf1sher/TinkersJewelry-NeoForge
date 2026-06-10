@@ -1,13 +1,14 @@
 package dev.ferriarnus.tinkersjewelry.data;
 
-import java.util.function.Consumer;
-
 import dev.ferriarnus.tinkersjewelry.TinkersJewelry;
 import dev.ferriarnus.tinkersjewelry.items.ItemRegistry;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+
+import java.util.concurrent.CompletableFuture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -27,12 +28,12 @@ import slimeknights.tconstruct.tools.data.material.MaterialIds;
 
 public class JewelryToolsRecipe extends RecipeProvider implements IMaterialRecipeHelper, IToolRecipeHelper {
 
-	public JewelryToolsRecipe(PackOutput output) {
-		super(output);
+	public JewelryToolsRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+		super(output, registries);
 	}
 
 	@Override
-	protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+	protected void buildRecipes(RecipeOutput consumer) {
 		String partFolder = "tools/parts/";
 		String castFolder = "smeltery/casts/";
 		String folder = "tools/building/";
@@ -46,13 +47,8 @@ public class JewelryToolsRecipe extends RecipeProvider implements IMaterialRecip
 		dummyGem(consumer, ItemRegistry.GEM.get(), JewelryMaterials.hematite, 1, partFolder);
 	}
 
-	public void dummyGem(Consumer<FinishedRecipe> consumer, IMaterialItem part, MaterialId materialId, int cost, String partFolder) {
+	public void dummyGem(RecipeOutput consumer, IMaterialItem part, MaterialId materialId, int cost, String partFolder) {
 		ItemPartRecipeBuilder.item(this.id(part), ItemOutput.fromStack(part.withMaterialForDisplay(materialId))).material(materialId, cost).setPatternItem(CompoundIngredient.of(Ingredient.of(TinkerTags.Items.DEFAULT_PATTERNS))).save(consumer, this.location(partFolder + "builder/" + materialId.getPath()));
-	}
-
-	@Override
-	public String getName() {
-	    return "Tinkers' Jewelry Tool Recipes";
 	}
 
 	@Override
