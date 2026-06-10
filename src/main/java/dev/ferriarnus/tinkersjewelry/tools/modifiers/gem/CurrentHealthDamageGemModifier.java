@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
@@ -31,7 +33,7 @@ public class CurrentHealthDamageGemModifier extends AbstractGemModifier {
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = (0.1 * level * amp);
-        attributeModifiers.put(ALObjects.Attributes.CURRENT_HP_DAMAGE.get(), new AttributeModifier(uuid, "tinkersjewelry:currenthealtdamagegem", effect, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(ALObjects.Attributes.CURRENT_HP_DAMAGE.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:currenthealtdamagegem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
@@ -32,7 +34,7 @@ public class GravityGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = -(0.01 * level * amp);
-        attributeModifiers.put(ForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(uuid, "tinkersjewelry:gravitygem", effect, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(NeoForgeMod.ENTITY_GRAVITY.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:gravitygem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

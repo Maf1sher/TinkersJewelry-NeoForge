@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;

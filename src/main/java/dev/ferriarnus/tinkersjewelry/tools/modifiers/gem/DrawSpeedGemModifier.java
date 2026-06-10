@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
@@ -32,7 +34,7 @@ public class DrawSpeedGemModifier extends AbstractGemModifier{
         int level = toolStack.getModifierLevel(modifier.getId());
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         double effect = 0.25 * level * amp;
-        attributeModifiers.put(ALObjects.Attributes.DRAW_SPEED.get(), new AttributeModifier(uuid, "tinkersjewelry:drawspeedgem", effect, AttributeModifier.Operation.MULTIPLY_BASE));
+        attributeModifiers.put(ALObjects.Attributes.DRAW_SPEED.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:drawspeedgem"), effect, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return attributeModifiers;
     }
 

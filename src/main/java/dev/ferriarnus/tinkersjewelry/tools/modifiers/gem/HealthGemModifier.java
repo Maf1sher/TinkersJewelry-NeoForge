@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
@@ -32,7 +34,7 @@ public class HealthGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = 3 * level * amp;
-        attributeModifiers.put(Attributes.MAX_HEALTH, new AttributeModifier(uuid, "tinkersjewelry:healthgem", effect, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(Attributes.MAX_HEALTH, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:healthgem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

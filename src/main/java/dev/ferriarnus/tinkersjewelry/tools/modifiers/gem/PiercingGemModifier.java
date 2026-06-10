@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
@@ -31,7 +33,7 @@ public class PiercingGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId()) - 1;
         double effect = (0.1 + level * 0.05)* amp;
-        attributeModifiers.put(ALObjects.Attributes.ARMOR_PIERCE.get(), new AttributeModifier(uuid, "tinkersjewelry:fireresistancegem", effect, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(ALObjects.Attributes.ARMOR_PIERCE.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:fireresistancegem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

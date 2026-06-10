@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
@@ -31,8 +33,8 @@ public class ReachGemModifier extends AbstractGemModifier {
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = level * amp;
-        attributeModifiers.put(ForgeMod.ENTITY_REACH.get(), new AttributeModifier(uuid, "tinkersjewelry:entity_reachgem", effect, AttributeModifier.Operation.ADDITION));
-        attributeModifiers.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(uuid, "tinkersjewelry:block_reachgem", effect, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(NeoForgeMod.ENTITY_REACH.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:entity_reachgem"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(NeoForgeMod.BLOCK_REACH.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:block_reachgem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

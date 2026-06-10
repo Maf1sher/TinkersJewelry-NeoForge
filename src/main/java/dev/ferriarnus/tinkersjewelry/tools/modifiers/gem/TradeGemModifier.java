@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.GemAttributes;
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
@@ -29,7 +31,7 @@ public class TradeGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = 7 * level * amp;
-        attributeModifiers.put(GemAttributes.TRADE.get(), new AttributeModifier(uuid, "tinkersjewelry:trade", effect, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(GemAttributes.TRADE.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:trade"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

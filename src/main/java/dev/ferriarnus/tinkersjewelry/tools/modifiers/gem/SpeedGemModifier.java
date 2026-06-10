@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import com.google.common.collect.Multimap;
@@ -32,7 +34,7 @@ public class SpeedGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId()) - 1;
         double effect = (1.2 + level * 0.3 ) * amp;
-        attributeModifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(uuid, "tinkersjewelry:speedgem", effect, AttributeModifier.Operation.MULTIPLY_BASE));
+        attributeModifiers.put(Attributes.MOVEMENT_SPEED, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:speedgem"), effect, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         return attributeModifiers;
     }
 

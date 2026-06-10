@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.GemAttributes;
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
@@ -31,7 +33,7 @@ public class FortuneGemModifier extends AbstractGemModifier{
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = level * amp;
-        attributeModifiers.put(GemAttributes.FORTUNE.get(), new AttributeModifier(uuid, "tinkersjewelry:fortunegem", effect, AttributeModifier.Operation.ADDITION));
+        attributeModifiers.put(GemAttributes.FORTUNE.get(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:fortunegem"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

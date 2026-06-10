@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
 import dev.shadowsoffire.attributeslib.api.ALObjects;
 import net.minecraft.ChatFormatting;

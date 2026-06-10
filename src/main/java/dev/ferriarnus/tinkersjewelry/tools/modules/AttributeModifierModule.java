@@ -2,6 +2,7 @@ package dev.ferriarnus.tinkersjewelry.tools.modules;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import dev.ferriarnus.tinkersjewelry.TinkersJewelry;
 import dev.ferriarnus.tinkersjewelry.tools.hooks.AttributeModifierHook;
 import dev.ferriarnus.tinkersjewelry.tools.hooks.CuriosModifierHooks;
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
@@ -57,7 +58,7 @@ public record AttributeModifierModule(String unique, Attribute attribute, Attrib
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack, ModifierEntry modifier) {
         Multimap<Attribute, AttributeModifier> attributeModifiers = HashMultimap.create();
         ToolStack toolStack = ToolStack.from(stack);
-        attributeModifiers.put(attribute, new AttributeModifier(uuid, unique, formula.apply(toolStack, modifier), operation));
+        attributeModifiers.put(attribute, new AttributeModifier(ResourceLocation.parse(TinkersJewelry.MODID + ":" + unique), formula.apply(toolStack, modifier), operation));
         return attributeModifiers;
     }
 

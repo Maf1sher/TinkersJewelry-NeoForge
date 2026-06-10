@@ -1,5 +1,7 @@
 package dev.ferriarnus.tinkersjewelry.tools.modifiers.gem;
 
+import net.minecraft.resources.ResourceLocation;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +30,7 @@ public class RageGemModifier extends AbstractGemModifier{
 		int level = toolStack.getModifierLevel(modifier.getId()) - 1;
 		float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
 		double effect = (1.25D + 0.25 * level) * amp;
-		attributeModifiers.put(Attributes.ATTACK_SPEED, new AttributeModifier(uuid, "tinkersjewelry:ragegem", effect, AttributeModifier.Operation.MULTIPLY_BASE));
+		attributeModifiers.put(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.parse("tinkersjewelry:ragegem"), effect, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 		return attributeModifiers;
 	}
 
