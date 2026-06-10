@@ -29,16 +29,6 @@ public class MixinItemPredicate implements IEntityAwarePredicate {
 
     @WrapOperation(method = "matches", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/EnchantmentPredicate;containedIn(Lnet/minecraft/world/item/enchantment/ItemEnchantments;)Z"))
     public boolean matchEnchantment(EnchantmentPredicate instance, ItemEnchantments enchantments, Operation<Boolean> original) {
-        if (entity == null) {
-            return original.call(instance, enchantments);
-        }
-        double value = 0;
-        if (instance.enchantment != null && instance.enchantment.is(Enchantments.FORTUNE)) {
-            value = entity.getAttributeValue(GemAttributes.FORTUNE);
-        }
-        if (instance.enchantment != null && instance.enchantment.is(Enchantments.SILK_TOUCH)) {
-            value = entity.getAttributeValue(GemAttributes.SILK);
-        }
-        return original.call(instance, enchantments) || value > 0;
+        return original.call(instance, enchantments);
     }
 }

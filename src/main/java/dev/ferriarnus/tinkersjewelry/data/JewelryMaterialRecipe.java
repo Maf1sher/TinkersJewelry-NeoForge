@@ -33,7 +33,7 @@ public class JewelryMaterialRecipe extends RecipeProvider implements IMaterialRe
 		materialRecipe(consumer, JewelryMaterials.eudialyte, Ingredient.of(ItemRegistry.EUDIALYTE), 1, 1, folder + "gems/blood");
 		materialRecipe(consumer, JewelryMaterials.lapis, Ingredient.of(Items.LAPIS_LAZULI), 1, 1, folder + "gems/lapis");
 		materialRecipe(consumer, JewelryMaterials.netherstar, Ingredient.of(Items.NETHER_STAR), 1, 1, folder + "gems/netherstar");
-		materialRecipe(consumer, JewelryMaterials.scute, Ingredient.of(Items.SCUTE), 1, 1, folder + "gems/scute");
+		materialRecipe(consumer, JewelryMaterials.scute, Ingredient.of(Items.TURTLE_SCUTE), 1, 1, folder + "gems/scute");
 		materialRecipe(consumer, JewelryMaterials.diamond, Ingredient.of(Items.DIAMOND), 1, 1, folder + "gems/diamond");
 		materialRecipe(consumer, JewelryMaterials.quartz, Ingredient.of(Items.QUARTZ), 1, 1, folder + "gems/quartz");
 		materialRecipe(consumer, JewelryMaterials.amethyst, Ingredient.of(Items.AMETHYST_SHARD), 1, 1, folder + "gems/amethyst");

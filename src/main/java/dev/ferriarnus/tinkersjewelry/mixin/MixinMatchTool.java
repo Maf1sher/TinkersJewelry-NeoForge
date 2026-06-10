@@ -18,9 +18,6 @@ public class MixinMatchTool {
 
     @WrapOperation(method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/advancements/critereon/ItemPredicate;matches(Lnet/minecraft/world/item/ItemStack;)Z"))
     public boolean matchEnchantment(ItemPredicate instance, ItemStack map, Operation<Boolean> original, @Local(argsOnly = true) LootContext context) {
-        if (context.getParamOrNull(LootContextParams.THIS_ENTITY) instanceof LivingEntity living) {
-            if (instance instanceof IEntityAwarePredicate aware) { aware.setEntity(living); }
-        }
         return original.call(instance, map);
     }
 }

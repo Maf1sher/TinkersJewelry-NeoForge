@@ -28,7 +28,7 @@ public class CleanseGemModifier extends AbstractGemModifier{
         if (entity == null) {
             return;
         }
-        List<MobEffectInstance> badEffects = entity.getActiveEffects().stream().filter(e -> !e.getEffect().isBeneficial()).toList();
+        List<MobEffectInstance> badEffects = entity.getActiveEffects().stream().filter(e -> !e.getEffect().value().isBeneficial()).toList();
         ToolStack toolStack = ToolStack.from(stack);
         int level = toolStack.getModifierLevel(JewelryModifiers.CLEANSE_GEM.getModifierId());
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);

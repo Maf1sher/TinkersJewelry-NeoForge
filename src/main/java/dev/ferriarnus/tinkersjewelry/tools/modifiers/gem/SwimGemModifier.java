@@ -34,7 +34,7 @@ public class SwimGemModifier extends AbstractGemModifier {
         float amp = toolStack.getStats().get(JewelryToolStats.AMPLIFICATION);
         int level = toolStack.getModifierLevel(modifier.getId());
         double effect = level*amp;
-        attributeModifiers.put(NeoForgeMod.SWIM_SPEED.get().value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:swim"), effect, AttributeModifier.Operation.ADD_VALUE));
+        attributeModifiers.put(NeoForgeMod.SWIM_SPEED.value(), new AttributeModifier(ResourceLocation.parse("tinkersjewelry:swim"), effect, AttributeModifier.Operation.ADD_VALUE));
         return attributeModifiers;
     }
 

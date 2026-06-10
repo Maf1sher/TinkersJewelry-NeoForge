@@ -115,7 +115,9 @@ public class DamageItemEvents {
 				for (int i=0; i < curios.getSlots(); i++) {
 					ItemStack stackInSlot = curios.getStackInSlot(i);
 					if (ModifierUtil.checkVolatileFlag(stackInSlot, SOULBOUND)) {
-						stackInSlot.getOrCreateTag().putInt(SOULBOUND_SLOT, i);
+						net.minecraft.nbt.CompoundTag soulboundTag = new net.minecraft.nbt.CompoundTag();
+						soulboundTag.putInt(SOULBOUND_SLOT, i);
+						stackInSlot.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(soulboundTag));
 					}
 				}
 			});
@@ -140,20 +142,28 @@ public class DamageItemEvents {
 				ItemEntity itemEntity = iter.next();
 				ItemStack stack = itemEntity.getItem();
 				// find items with our soulbound tag set and move them back into the inventory, will move them over later
-				CompoundTag tag = stack.getTag();
-				if (tag != null && tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
-					int slot = tag.getInt(SOULBOUND_SLOT);
-					// return the tool to its requested slot if possible, remove from the drops
-					if (iItemHandlerModifiable.getStackInSlot(slot).isEmpty()) {
-						iItemHandlerModifiable.setStackInSlot(slot, stack);
-						tag.remove(SOULBOUND_SLOT);
-					} else {
-						// hold off on handling items that did not get the requested slot for now
-						// want to make sure they don't get in the way of items that have not yet been seen
-						takenSlot.add(itemEntity);
+				net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+				if (customData != null) {
+					CompoundTag tag = customData.copyTag();
+					if (tag.contains(SOULBOUND_SLOT, Tag.TAG_ANY_NUMERIC)) {
+						int slot = tag.getInt(SOULBOUND_SLOT);
+						// return the tool to its requested slot if possible, remove from the drops
+						if (iItemHandlerModifiable.getStackInSlot(slot).isEmpty()) {
+							iItemHandlerModifiable.setStackInSlot(slot, stack);
+							tag.remove(SOULBOUND_SLOT);
+							if (!tag.isEmpty()) {
+								stack.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(tag));
+							} else {
+								stack.remove(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+							}
+						} else {
+							// hold off on handling items that did not get the requested slot for now
+							// want to make sure they don't get in the way of items that have not yet been seen
+							takenSlot.add(itemEntity);
+						}
+						iter.remove();
+						// don't clear the tag yet, we need it one last time for player clone
 					}
-					iter.remove();
-					// don't clear the tag yet, we need it one last time for player clone
 				}
 			}
 			// handle items that did not get their requested slot last, to ensure they don't take someone else's slot while being added to a default
@@ -163,11 +173,14 @@ public class DamageItemEvents {
 					// last resort, somehow we just cannot put the stack anywhere, so drop it on the ground
 					// this should never happen, but better to be safe
 					// ditch the soulbound slot tag, to prevent item stacking issues
-					CompoundTag tag = stack.getTag();
-					if (tag != null) {
+					net.minecraft.world.item.component.CustomData customData = stack.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+					if (customData != null) {
+						CompoundTag tag = customData.copyTag();
 						tag.remove(SOULBOUND_SLOT);
 						if (tag.isEmpty()) {
-							stack.setTag(null);
+							stack.remove(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+						} else {
+							stack.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(tag));
 						}
 					}
 					drops.add(itemEntity);

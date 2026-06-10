@@ -50,7 +50,7 @@ public class JewelrySmeltryRecipe extends RecipeProvider implements ISmelteryRec
                 .save(consumer, location(folder + "honey/speedgem"));
 
         ItemCastingRecipeBuilder.tableRecipe(ItemRegistry.MILKY_QUARTZ)
-                .setFluidAndTime(new FluidStack(NeoForgeMod.MILK.get().value(), FluidType.BUCKET_VOLUME))
+                .setFluidAndTime(new FluidStack(NeoForgeMod.MILK.get(), FluidType.BUCKET_VOLUME))
                 .setCast(Items.QUARTZ, true)
                 .save(consumer, location(folder + "milk/cleansegem"));
 

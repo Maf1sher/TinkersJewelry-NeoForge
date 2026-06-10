@@ -25,7 +25,7 @@ public class EnderclearanceGemModifier extends AbstractGemModifier {
 
     @Override
     public void hurtUser(ItemStack stack, DamageSource source, double damage, @Nullable LivingEntity defender, @Nullable Entity attacker, ModifierEntry modifier) {
-        if (!source.isIndirect()) {
+        if (source.getDirectEntity() != null) {
             if (attacker instanceof LivingEntity entity) {
                 ToolStack tool = ToolStack.from(stack);
                 int level = tool.getModifierLevel(JewelryModifiers.ENDERCLEARANCE_GEM.getModifierId());
