@@ -3,5 +3,13 @@
   "cost": 1,
   "material": "tconstruct:ender_pearl",
   "pattern": "tinkersjewelry:gem",
-  "result": "tinkersjewelry:gem"
+  "result": {
+    "components": {
+      "minecraft:custom_data": {
+        "Material": "tconstruct:ender_pearl"
+      }
+    },
+    "count": 1,
+    "item": "tinkersjewelry:gem"
+  }
 }

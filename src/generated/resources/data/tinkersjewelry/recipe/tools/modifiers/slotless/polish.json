@@ -4,18 +4,23 @@
   "check_trait_level": true,
   "inputs": [
     {
+      "count": 1,
       "item": "minecraft:charcoal"
     },
     {
+      "count": 1,
       "item": "minecraft:honeycomb"
     },
     {
+      "count": 1,
       "item": "minecraft:glowstone_dust"
     },
     {
+      "count": 1,
       "tag": "minecraft:sand"
     },
     {
+      "count": 1,
       "item": "tconstruct:silky_cloth"
     }
   ],

@@ -1,0 +1,43 @@
+{
+  "level_display": "tconstruct:default",
+  "modules": [
+    {
+      "type": "tinkersjewelry:attribute_modifier",
+      "attribute": "minecraft:player.entity_interaction_range",
+      "formula": [
+        "$level",
+        "$amplification",
+        "*"
+      ],
+      "operation": "add_value",
+      "unique": "tinkersjewelry.modifier.reach_gem",
+      "variables": {
+        "amplification": {
+          "type": "tconstruct:tool_stat",
+          "stat": "tinkersjewelry:amplification"
+        }
+      }
+    },
+    {
+      "type": "tinkersjewelry:attribute_modifier",
+      "attribute": "minecraft:player.block_interaction_range",
+      "formula": [
+        "$level",
+        "$amplification",
+        "*"
+      ],
+      "operation": "add_value",
+      "unique": "tinkersjewelry.modifier.reach_gem",
+      "variables": {
+        "amplification": {
+          "type": "tconstruct:tool_stat",
+          "stat": "tinkersjewelry:amplification"
+        }
+      }
+    },
+    {
+      "type": "tinkersjewelry:hurt_enemy",
+      "flat": 1.0
+    }
+  ]
+}

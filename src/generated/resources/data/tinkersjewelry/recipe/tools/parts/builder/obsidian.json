@@ -3,5 +3,13 @@
   "cost": 1,
   "material": "tconstruct:obsidian",
   "pattern": "tinkersjewelry:gem",
-  "result": "tinkersjewelry:gem"
+  "result": {
+    "components": {
+      "minecraft:custom_data": {
+        "Material": "tconstruct:obsidian"
+      }
+    },
+    "count": 1,
+    "item": "tinkersjewelry:gem"
+  }
 }

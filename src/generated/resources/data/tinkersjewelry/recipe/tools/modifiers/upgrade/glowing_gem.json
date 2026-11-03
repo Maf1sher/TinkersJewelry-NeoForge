@@ -4,7 +4,7 @@
   "check_trait_level": true,
   "inputs": [
     {
-      "amount_needed": 20,
+      "count": 20,
       "item": "minecraft:glowstone_dust"
     }
   ],

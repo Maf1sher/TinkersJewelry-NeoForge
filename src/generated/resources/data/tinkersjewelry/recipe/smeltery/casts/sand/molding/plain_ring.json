@@ -5,9 +5,7 @@
   },
   "pattern": {
     "type": "tconstruct:material",
-    "match": {
-      "item": "tinkersjewelry:plain_ring"
-    }
+    "item": "tinkersjewelry:plain_ring"
   },
   "result": "tinkersjewelry:plain_ring_sand_cast"
 }

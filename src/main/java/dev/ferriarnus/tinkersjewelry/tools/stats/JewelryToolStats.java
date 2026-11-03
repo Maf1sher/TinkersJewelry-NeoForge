@@ -11,7 +11,7 @@ import static slimeknights.tconstruct.library.json.variable.tool.ToolVariable.si
 
 public class JewelryToolStats {
 
-	public static final FloatToolStat AMPLIFICATION = ToolStats.register(new FloatToolStat(new ToolStatId(TinkersJewelry.MODID, "amplification"), 0xbd41a2, 1, 0.1f, 3));
+	public static final FloatToolStat AMPLIFICATION = ToolStats.registerConditional(new FloatToolStat(new ToolStatId(TinkersJewelry.MODID, "amplification"), 0xbd41a2, 1, 0.1f, 3));
 
 	public static void register() {}
 }

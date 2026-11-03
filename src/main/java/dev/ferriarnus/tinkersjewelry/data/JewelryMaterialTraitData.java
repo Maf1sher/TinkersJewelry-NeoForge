@@ -65,8 +65,8 @@ public class JewelryMaterialTraitData extends AbstractMaterialTraitDataProvider 
 
 		addTraits(JewelryMaterials.hematite, GemMaterialStats.ID, new ModifierEntry(JewelryModifiers.LIFESTEAL_GEM, 2));
 		addTraits(JewelryMaterials.ichor_crystal, GemMaterialStats.ID, TinkerModifiers.overslime.getId(), JewelryModifiers.FIRERESISTANCE_GEM);
-		addTraits(JewelryMaterials.ender_crystal, GemMaterialStats.ID, TinkerModifiers.overslime.getId());
-		addTraits(JewelryMaterials.sky_crystal, GemMaterialStats.ID, TinkerModifiers.overslime.getId());
+		addTraits(JewelryMaterials.ender_crystal, GemMaterialStats.ID, TinkerModifiers.overslime.getId(), JewelryModifiers.REACH_GEM);
+		addTraits(JewelryMaterials.sky_crystal, GemMaterialStats.ID, TinkerModifiers.overslime.getId(), JewelryModifiers.GRAVITY_GEM);
 		addTraits(JewelryMaterials.earth_crystal, GemMaterialStats.ID, TinkerModifiers.overslime.getId(), JewelryModifiers.RESISTANCE_GEM);
 
 		addTraits(MaterialIds.rock, GemMaterialStats.ID, JewelryModifiers.ARMOR_GEM);
