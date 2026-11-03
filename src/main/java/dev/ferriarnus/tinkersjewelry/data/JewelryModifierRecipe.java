@@ -49,7 +49,7 @@ public class JewelryModifierRecipe extends RecipeProvider implements IConditionB
                 .addInput(ItemTags.SAND)
                 .addInput(TinkerModifiers.silkyCloth)
                 .setMaxLevel(1).checkTraitLevel()
-                .save(consumer, prefix(JewelryModifiers.POLISH.location(), slotlessFolder));
+                .save(consumer, prefix(JewelryModifiers.POLISH.getLocation(), slotlessFolder));
 
         ModifierRecipeBuilder.modifier(JewelryModifiers.UNDYING)
                 .setTools(Ingredient.of(TinkersJewelry.JEWELRY))
@@ -64,23 +64,23 @@ public class JewelryModifierRecipe extends RecipeProvider implements IConditionB
                 .addInput(Items.ENDER_CHEST)
                 .setSlots(SlotType.ABILITY, 1)
                 .setMaxLevel(1).checkTraitLevel()
-                .saveSalvage(consumer, prefix(JewelryModifiers.SUBSPACE.location(), abilitySalvage))
-                .save(consumer, prefix(JewelryModifiers.SUBSPACE.location(), abilityFolder));
+                .saveSalvage(consumer, prefix(JewelryModifiers.SUBSPACE.getLocation(), abilitySalvage))
+                .save(consumer, prefix(JewelryModifiers.SUBSPACE.getLocation(), abilityFolder));
 
         ModifierRecipeBuilder.modifier(JewelryModifiers.GLOWING_GEM)
                 .setTools(Ingredient.of(TinkersJewelry.JEWELRY))
                 .addInput(Items.GLOWSTONE_DUST, 20)
                 .setSlots(SlotType.ABILITY, 1)
                 .setMaxLevel(1).checkTraitLevel()
-                .saveSalvage(consumer, prefix(JewelryModifiers.GLOWING_GEM.location(), upgradeSalvage))
-                .save(consumer, prefix(JewelryModifiers.GLOWING_GEM.location(), upgradeFolder));
+                .saveSalvage(consumer, prefix(JewelryModifiers.GLOWING_GEM.getLocation(), upgradeSalvage))
+                .save(consumer, prefix(JewelryModifiers.GLOWING_GEM.getLocation(), upgradeFolder));
 
         ModifierRecipeBuilder.modifier(JewelryModifiers.MAGNETIC)
                 .setTools(Ingredient.of(TinkersJewelry.JEWELRY))
                 .addInput(Items.COMPASS)
                 .setSlots(SlotType.UPGRADE, 1)
                 .setMaxLevel(1).checkTraitLevel()
-                .save(consumer, prefix(JewelryModifiers.MAGNETIC.location(), upgradeFolder));
+                .save(consumer, prefix(JewelryModifiers.MAGNETIC.getLocation(), upgradeFolder));
     }
 
     @Override

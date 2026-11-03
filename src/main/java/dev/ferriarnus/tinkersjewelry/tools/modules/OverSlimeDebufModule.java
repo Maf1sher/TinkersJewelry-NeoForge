@@ -26,7 +26,7 @@ public record OverSlimeDebufModule() implements ToolStatsHook, ToolModule {
 
     @Override
     public void addToolStats(IToolContext iToolContext, ModifierStatsBuilder modifierStatsBuilder) {
-        if (iToolContext.getModifierLevel(overslime.getModifierId()) > 0 && !hasFriend(iToolContext)) {
+        if (iToolContext.getModifierLevel(overslime.getId()) > 0 && !hasFriend(iToolContext)) {
             JewelryToolStats.AMPLIFICATION.multiplyAll(modifierStatsBuilder, 0.8F);
         }
     }

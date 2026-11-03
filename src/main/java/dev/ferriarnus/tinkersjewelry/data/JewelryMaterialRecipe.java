@@ -80,12 +80,12 @@ public class JewelryMaterialRecipe extends RecipeProvider implements IMaterialRe
 	}
 
 	public void optionalMaterialRecipe(RecipeOutput consumer, MaterialVariantId material, TagKey<Item> tag, int value, int needed, String saveName) {
-		RecipeOutput wrapped = this.withCondition(consumer, this.tagCondition(tag.location().getPath()));
+		RecipeOutput wrapped = consumer.withConditions(this.tagCondition(tag.location().getPath()));
 		this.materialRecipe(wrapped, material, Ingredient.of(tag), value, needed, null, saveName);
 	}
 
 	public void optionalMaterialRecipeWithCondition(RecipeOutput consumer, MaterialVariantId material, String itemId, String saveName) {
-		RecipeOutput wrapped = this.withCondition(consumer, this.tagCondition(itemId.replace(':', '/')));
+		RecipeOutput wrapped = consumer.withConditions(this.tagCondition(itemId.replace(':', '/')));
 		Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
 		if (item != null) {
 			this.materialRecipe(wrapped, material, Ingredient.of(item), 1, 1, null, saveName);

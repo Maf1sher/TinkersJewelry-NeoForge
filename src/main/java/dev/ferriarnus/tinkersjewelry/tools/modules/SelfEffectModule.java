@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Function;
 
-public record SelfEffectModule(MobEffect effect, ToolFormula duration, ToolFormula amplification, ToolFormula damage) implements ModifierModule, CuriosTickHook {
+public record SelfEffectModule(Holder<MobEffect> effect, ToolFormula duration, ToolFormula amplification, ToolFormula damage) implements ModifierModule, CuriosTickHook {
 
     private static final String[] VARIABLES = { "level" };
     private static final RecordLoadable<ToolFormula> VARIABLE_LOADER = new VariableFormulaLoadable<>(ToolVariable.LOADER, VARIABLES, ModifierFormula.FallbackFormula.IDENTITY, (formula, variables, percent) -> new ToolFormula(formula, variables, VariableFormula.EMPTY_STRINGS));
@@ -58,23 +58,23 @@ public record SelfEffectModule(MobEffect effect, ToolFormula duration, ToolFormu
         LivingEntity entity = slotContext.entity();
         ToolStack tool = ToolStack.from(stack);
         int i = Mth.floor(duration.apply(tool, entry));
-        if (!entity.hasEffect(Holder.direct(effect)) || entity.getEffect(Holder.direct(effect)).getDuration() < i / 2) {
-            entity.addEffect(new MobEffectInstance(Holder.direct(effect), i, Mth.floor(amplification.apply(tool, entry)), false, false));
+        if (!entity.hasEffect(effect) || entity.getEffect(effect).getDuration() < i / 2) {
+            entity.addEffect(new MobEffectInstance(effect, i, Mth.floor(amplification.apply(tool, entry)), false, false));
             ToolDamageUtil.damage(tool, Math.round(damage.apply(tool, entry)), entity, stack);
         }
     }
 
-    public static Builder builder(MobEffect effect) {
+    public static Builder builder(Holder<MobEffect> effect) {
         return new Builder(effect);
     }
 
     public static class Builder extends VariableFormula.Builder<Builder, SelfEffectModule, ToolVariable> {
 
-        private final MobEffect effect;
+        private final Holder<MobEffect> effect;
         private ModifierFormula amplificationFormula = PostFixFormula.builder(VARIABLES).constant(0).buildFormula();
         private ModifierFormula damageFormula = PostFixFormula.builder(VARIABLES).constant(1).buildFormula();
 
-        protected Builder(MobEffect effect) {
+        protected Builder(Holder<MobEffect> effect) {
             super(VARIABLES);
             this.effect = effect;
         }

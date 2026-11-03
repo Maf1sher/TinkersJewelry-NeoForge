@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public record EnemyEffectModule(MobEffect effect, ToolFormula duration, ToolFormula amplification) implements ModifierModule, HurtEnemyHook {
+public record EnemyEffectModule(Holder<MobEffect> effect, ToolFormula duration, ToolFormula amplification) implements ModifierModule, HurtEnemyHook {
 
     private static final String[] VARIABLES = { "level" };
     private static final RecordLoadable<ToolFormula> VARIABLE_LOADER = new VariableFormulaLoadable<>(ToolVariable.LOADER, VARIABLES, ModifierFormula.FallbackFormula.IDENTITY, (formula, variables, percent) -> new ToolFormula(formula, variables, VariableFormula.EMPTY_STRINGS));
@@ -52,23 +52,23 @@ public record EnemyEffectModule(MobEffect effect, ToolFormula duration, ToolForm
 
     @Override
     public void hurtEnemy(ItemStack stack, DamageSource source, double damage, @Nullable LivingEntity defender, @Nullable LivingEntity attacker, ModifierEntry modifier) {
-        if (defender == null || defender.hasEffect(Holder.direct(effect))) {
+        if (defender == null || defender.hasEffect(effect)) {
             return;
         }
         ToolStack tool = ToolStack.from(stack);
-        defender.addEffect(new MobEffectInstance(Holder.direct(effect), Mth.floor(duration.apply(tool, modifier)), Mth.floor(amplification.apply(tool, modifier))));
+        defender.addEffect(new MobEffectInstance(effect, Mth.floor(duration.apply(tool, modifier)), Mth.floor(amplification.apply(tool, modifier))));
     }
 
-    public static Builder builder(MobEffect effect) {
+    public static Builder builder(Holder<MobEffect> effect) {
         return new Builder(effect);
     }
 
     public static class Builder extends VariableFormula.Builder<Builder, EnemyEffectModule, ToolVariable> {
 
-        private final MobEffect effect;
+        private final Holder<MobEffect> effect;
         private ModifierFormula amplificationFormula = PostFixFormula.builder(VARIABLES).constant(0).buildFormula();
 
-        protected Builder(MobEffect effect) {
+        protected Builder(Holder<MobEffect> effect) {
             super(VARIABLES);
             this.effect = effect;
         }

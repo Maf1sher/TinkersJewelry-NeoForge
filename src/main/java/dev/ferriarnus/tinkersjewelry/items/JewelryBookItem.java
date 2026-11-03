@@ -8,7 +8,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import slimeknights.mantle.item.LecternBookItem;
+import slimeknights.mantle.item.book.LecternBookItem;
 
 public class JewelryBookItem extends LecternBookItem {
 

@@ -16,8 +16,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import slimeknights.mantle.item.TooltipItem;
-import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import slimeknights.mantle.item.tooltip.TooltipItem;
 import slimeknights.mantle.registration.object.ItemObject;
 import slimeknights.tconstruct.common.registration.CastItemObject;
 import slimeknights.tconstruct.common.registration.ItemDeferredRegisterExtension;
@@ -31,7 +32,7 @@ import slimeknights.tconstruct.tables.TinkerTables;
 
 public class ItemRegistry {
 
-	protected static final SynchronizedDeferredRegister<CreativeModeTab> CREATIVE_TABS = SynchronizedDeferredRegister.create(Registries.CREATIVE_MODE_TAB, TinkersJewelry.MODID);
+	protected static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TinkersJewelry.MODID);
 
 	private static final Item.Properties PARTS_PROPS = new Item.Properties();
 	
@@ -44,26 +45,27 @@ public class ItemRegistry {
 	}
 
 	//Materials
-	public static final ItemObject<Item> EUDIALYTE = ITEMS.register("eudialyte", () -> new TooltipItem(new Item.Properties()));
-	public static final ItemObject<Item> FIRE_OPAL = ITEMS.register("fire_opal", () -> new TooltipItem(new Item.Properties()));
-	public static final ItemObject<Item> MALACHITE = ITEMS.register("malachite", () -> new TooltipItem(new Item.Properties()));
-	public static final ItemObject<Item> CALCITE = ITEMS.register("calcite", () -> new TooltipItem(new Item.Properties()));
-	public static final ItemObject<Item> MILKY_QUARTZ = ITEMS.register("milky_quartz", () -> new TooltipItem(new Item.Properties()));
-	public static final ItemObject<Item> MERLINITE = ITEMS.register("merlinite", () -> new TooltipItem(new Item.Properties()));
-	public static final ItemObject<Item> PREHNITE = ITEMS.register("prehnite", () -> new TooltipItem(new Item.Properties()));
-	public static final ItemObject<Item> RUBELLITE = ITEMS.register("rubellite", () -> new TooltipItem(new Item.Properties()));
+	public static final ItemObject<Item, TooltipItem> EUDIALYTE = new ItemObject<>(ITEMS.register("eudialyte", () -> new TooltipItem(new Item.Properties())));
+	public static final ItemObject<Item, TooltipItem> FIRE_OPAL = new ItemObject<>(ITEMS.register("fire_opal", () -> new TooltipItem(new Item.Properties())));
+	public static final ItemObject<Item, TooltipItem> MALACHITE = new ItemObject<>(ITEMS.register("malachite", () -> new TooltipItem(new Item.Properties())));
+	public static final ItemObject<Item, TooltipItem> CALCITE = new ItemObject<>(ITEMS.register("calcite", () -> new TooltipItem(new Item.Properties())));
+	public static final ItemObject<Item, TooltipItem> MILKY_QUARTZ = new ItemObject<>(ITEMS.register("milky_quartz", () -> new TooltipItem(new Item.Properties())));
+	public static final ItemObject<Item, TooltipItem> MERLINITE = new ItemObject<>(ITEMS.register("merlinite", () -> new TooltipItem(new Item.Properties())));
+	public static final ItemObject<Item, TooltipItem> PREHNITE = new ItemObject<>(ITEMS.register("prehnite", () -> new TooltipItem(new Item.Properties())));
+	public static final ItemObject<Item, TooltipItem> RUBELLITE = new ItemObject<>(ITEMS.register("rubellite", () -> new TooltipItem(new Item.Properties())));
 
 	//Toolparts
-	public static final ItemObject<ToolPartItem> PLAIN_RING = ITEMS.register("plain_ring", () -> new ToolPartItem(PARTS_PROPS, BlankBandMaterialStats.ID));
-	public static final ItemObject<ToolPartItem> GEM = ITEMS.register("gem", () -> new ToolPartItem(PARTS_PROPS, GemMaterialStats.ID));
+	private static final DeferredItem<ToolPartItem> PLAIN_RING_ITEM = ITEMS.register("plain_ring", () -> new ToolPartItem(PARTS_PROPS, BlankBandMaterialStats.ID));
+	public static final ItemObject<Item, ToolPartItem> PLAIN_RING = new ItemObject<>(PLAIN_RING_ITEM);
+	public static final ItemObject<Item, ToolPartItem> GEM = new ItemObject<>(ITEMS.register("gem", () -> new ToolPartItem(PARTS_PROPS, GemMaterialStats.ID)));
 
 	//Casts
-	public static final CastItemObject PLAIN_RING_CAST = ITEMS.registerCast(PLAIN_RING, PARTS_PROPS);
+	public static final CastItemObject PLAIN_RING_CAST = ITEMS.registerCast(PLAIN_RING_ITEM, PARTS_PROPS);
 
 	//Tools
-	public static final ItemObject<CuriosRingItem> RING = ITEMS.register("ring", () -> new CuriosRingItem(PARTS_PROPS, JewelryDefinitions.RING));
+	public static final ItemObject<Item, CuriosRingItem> RING = new ItemObject<>(ITEMS.register("ring", () -> new CuriosRingItem(PARTS_PROPS, JewelryDefinitions.RING)));
 
-	public static final ItemObject<JewelryBookItem> BOOK  = ITEMS.register("book", () -> new JewelryBookItem(new Item.Properties().stacksTo(1)));
+	public static final ItemObject<Item, JewelryBookItem> BOOK  = new ItemObject<>(ITEMS.register("book", () -> new JewelryBookItem(new Item.Properties().stacksTo(1))));
 
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> tabTools = CREATIVE_TABS.register(
 			"tools", () -> CreativeModeTab.builder().title(Component.translatable("itemGroup." + TinkersJewelry.MODID + ".all"))

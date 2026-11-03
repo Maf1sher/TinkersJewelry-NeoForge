@@ -7,6 +7,7 @@ import dev.ferriarnus.tinkersjewelry.tools.hooks.AttributeModifierHook;
 import dev.ferriarnus.tinkersjewelry.tools.hooks.CuriosModifierHooks;
 import dev.ferriarnus.tinkersjewelry.tools.modifiers.JewelryModifiers;
 import dev.ferriarnus.tinkersjewelry.tools.stats.JewelryToolStats;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -31,7 +32,7 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.List;
 import java.util.UUID;
 
-public record AttributeModifierModule(String unique, Attribute attribute, AttributeModifier.Operation operation, ToolFormula formula) implements ModifierModule, AttributeModifierHook {
+public record AttributeModifierModule(String unique, Holder<Attribute> attribute, AttributeModifier.Operation operation, ToolFormula formula) implements ModifierModule, AttributeModifierHook {
 
     private static final String[] VARIABLES = { "level" };
     private static final RecordLoadable<ToolFormula> VARIABLE_LOADER = new VariableFormulaLoadable<>(ToolVariable.LOADER, VARIABLES, ModifierFormula.FallbackFormula.IDENTITY, (formula, variables, percent) -> new ToolFormula(formula, variables, VariableFormula.EMPTY_STRINGS));
@@ -58,21 +59,21 @@ public record AttributeModifierModule(String unique, Attribute attribute, Attrib
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid, ItemStack stack, ModifierEntry modifier) {
         Multimap<Attribute, AttributeModifier> attributeModifiers = HashMultimap.create();
         ToolStack toolStack = ToolStack.from(stack);
-        attributeModifiers.put(attribute, new AttributeModifier(ResourceLocation.parse(TinkersJewelry.MODID + ":" + unique), formula.apply(toolStack, modifier), operation));
+        attributeModifiers.put(attribute.value(), new AttributeModifier(ResourceLocation.parse(TinkersJewelry.MODID + ":" + unique), formula.apply(toolStack, modifier), operation));
         return attributeModifiers;
     }
 
     /** Creates a new builder instance */
-    public static Builder builder(Attribute attribute, AttributeModifier.Operation operation) {
+    public static Builder builder(Holder<Attribute> attribute, AttributeModifier.Operation operation) {
         return new Builder(attribute, operation);
     }
 
     public static class Builder extends VariableFormula.Builder<Builder, AttributeModifierModule, ToolVariable> {
-        protected final Attribute attribute;
+        protected final Holder<Attribute> attribute;
         protected final AttributeModifier.Operation operation;
         protected String unique;
 
-        protected Builder(Attribute attribute, AttributeModifier.Operation operation) {
+        protected Builder(Holder<Attribute> attribute, AttributeModifier.Operation operation) {
             super(VARIABLES);
             this.attribute = attribute;
             this.operation = operation;
