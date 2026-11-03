@@ -35,13 +35,13 @@ side="BOTH"
 [[dependencies.${mod_id}]]
 modId="curios"
 type="required"
-versionRange="[8.0,)"
+versionRange="[9.0,)"
 ordering="AFTER"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="apothic_attributes"
 type="required"
-versionRange="[2.0,)"
+versionRange="[2.11,)"
 ordering="AFTER"
 side="BOTH"

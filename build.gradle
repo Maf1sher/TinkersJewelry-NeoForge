@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.140'
+    id 'net.neoforged.moddev' version '2.0.148'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -12,9 +12,15 @@ version = mod_version
 group = mod_group_id
 
 repositories {
-    mavenLocal()
+    mavenCentral()
+    maven {
+        url 'https://maven.neoforged.net/releases'
+    }
     maven {
         url 'https://maven.blamejared.com'
+    }
+    maven {
+        url 'https://maven.parchmentmc.org'
     }
     maven {
         url 'https://maven.theillusivec4.top/'
@@ -31,22 +37,24 @@ repositories {
             includeGroup 'curse.maven'
         }
     }
+    // Local Mantle-NeoForge and TinkersConstruct-NeoForge builds
     flatDir {
-        dir '../../Tinkers-1.21.1-NeoForge/Mantle-NeoForge/build/libs'
-    }
-    flatDir {
-        dir '../../Tinkers-1.21.1-NeoForge/TinkersConstruct-NeoForge/build/libs'
+        dirs '../Mantle-NeoForge/build/libs',
+             '../TinkersConstruct-NeoForge/build/libs'
     }
 }
 
 base {
-    archivesName = mod_id
+    archivesName = "TinkersJewelry-${minecraft_version}"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {
     version = neoforge_version
+
+    accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+    validateAccessTransformers = true
 
     parchment {
         minecraftVersion = parchment_minecraft_version
@@ -84,23 +92,28 @@ neoForge {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+    exclude '.cache'
+}
 
 configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
 dependencies {
-    implementation fileTree(dir: '../../Tinkers-1.21.1-NeoForge/Mantle-NeoForge/build/libs', include: 'Mantle-*.jar')
-    implementation fileTree(dir: '../../Tinkers-1.21.1-NeoForge/TinkersConstruct-NeoForge/build/libs', include: 'TinkersConstruct-*.jar')
+    implementation fileTree(dir: '../Mantle-NeoForge/build/libs',
+            include: 'Mantle-*.jar', exclude: ['*-sources.jar', '*-javadoc.jar'])
+    implementation fileTree(dir: '../TinkersConstruct-NeoForge/build/libs',
+            include: 'TinkersConstruct-*.jar', exclude: ['*-sources.jar', '*-javadoc.jar'])
 
     compileOnly("curse.maven:curios-309927:6529130")
     runtimeOnly("curse.maven:curios-309927:6529130")
 
-    compileOnly("curse.maven:placebo-283644:6926281")
-    runtimeOnly("curse.maven:placebo-283644:6926281")
-    compileOnly("curse.maven:apothic-attributes-898963:7445079")
-    runtimeOnly("curse.maven:apothic-attributes-898963:7445079")
+    compileOnly("curse.maven:placebo-283644:9153039")
+    runtimeOnly("curse.maven:placebo-283644:9153039")
+    compileOnly("curse.maven:apothic-attributes-898963:9006294")
+    runtimeOnly("curse.maven:apothic-attributes-898963:9006294")
 
     compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
